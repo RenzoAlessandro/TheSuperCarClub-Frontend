@@ -1,0 +1,49 @@
+/*============================================================
+======================= FEATURES SECTION =====================
+=============================================================*/
+.features-section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0;
+    background-color: var(--card-basic-color);
+    color: var(--text-color);
+
+    .feature:nth-child(even) {
+        background-color: var(--body-bg-color);
+    }
+}
+
+.features-section .feature {
+    padding: 3rem 1rem;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+
+    .fa-solid {
+        font-size: 3rem;
+        margin-bottom: .5rem;
+    }
+}
+/*============================================================
+===================== FEATURES SECTION END ===================
+=============================================================*/
+
+
+/*============================================================
+========================= RESPONSIVE =========================
+=============================================================*/
+@media screen and (width > 1200px) {
+
+    .features-section {
+        flex-direction: row;
+    }
+    
+    .features-section .feature {
+        flex: 1 1 0%;
+        padding: 4rem 1rem;
+    }
+
+}
+/*============================================================
+======================== RESPONSIVE END ======================
+=============================================================*/

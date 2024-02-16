@@ -1,0 +1,438 @@
+.input-group {
+    flex-grow: 1;
+    margin-top: .8rem;
+}
+
+/*============================================================
+======================== INPUT SIMPLE ========================
+=============================================================*/
+.inputSimple, .textareaSimple, .selectSimple {
+    width: 100%;
+    height: 46px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+
+    border: 1.5px solid rgb(40, 45, 58);
+    background-color: var(--input-color);
+    font-family: var(--body-font);
+    color: var(--text-color)
+}
+
+.textareaSimple {
+    resize: none;
+    height: 100%;
+}
+
+.inputSimple:hover, .textareaSimple:hover, .selectSimple:hover{
+    border: 2px solid rgb(80, 88, 113);
+    box-shadow: 0px 0px 20px -17px;
+}
+
+.inputSimple:active, .textareaSimple:active, .selectSimple:active {
+    transform: scale(0.95);
+}
+/*============================================================
+====================== INPUT SIMPLE END ======================
+=============================================================*/
+
+
+/*============================================================
+========================= INPUT ICON =========================
+=============================================================*/
+.input-group {
+    flex: 1 1 140px;
+    /* margin-top: .8rem; */
+    margin: .2rem .3rem;
+}
+
+.inputIconForm {
+    border-radius: 10px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+
+    border: 1.5px solid rgb(40, 45, 58);
+    background-color: var(--input-color);
+
+    color: var(--text-color);
+
+    & select{
+        appearance: none;
+        cursor: pointer;
+    }
+}
+
+.inputIcon {
+    margin-left: 10px;
+    padding: 0 8px;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+    outline: none;
+
+    background-color: var(--input-color);
+    font-family: var(--body-font);
+    color: var(--text-color);
+
+    &:disabled{
+        background-color: var(--input-disabled-color);
+    }
+}
+
+.inputIconForm:hover {
+    border: 2px solid rgb(80, 88, 113);
+    box-shadow: 0px 0px 20px -17px;
+}
+
+.inputIconForm:active {
+    transform: scale(0.95);
+}
+
+/*============================================================
+======================= INPUT ICON END =======================
+=============================================================*/
+
+
+/*============================================================
+====================== INPUT ICON COLOR ======================
+=============================================================*/
+.inputColor {
+    height: 100%;
+    border-radius: 10px;
+    padding: 0 2px 0 0;
+}
+.inputColor::-webkit-color-swatch{
+    border-radius: 10px;
+    border: none;
+}
+
+.inputColor::-moz-color-swatch {
+    border-radius: 10px;
+    border: none;
+}
+
+/*============================================================
+==================== INPUT ICON COLOR END ====================
+=============================================================*/
+
+
+/*============================================================
+======================= BUTTON SIMPLE ========================
+=============================================================*/
+.buttonSimple {
+    margin: 20px 0 10px 0;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 46px;
+    width: 100%;
+    cursor: pointer;
+
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    background-color: var(--button-color);
+    font-family: var(--body-font);
+    color: var(--text-color-reverse);
+}
+/*============================================================
+===================== BUTTON SIMPLE END ======================
+=============================================================*/
+
+/*============================================================
+===================== CYBERPUNK CHECKBOX =====================
+=============================================================*/
+.cyberpunk-checkbox {
+    appearance: none;
+    width: 30px;
+    height: 20px;
+    border: 2px solid var(--button-color);
+    border-radius: 5px;
+    background-color: transparent;
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.cyberpunk-checkbox:before {
+    content: "";
+    background-color: var(--button-color);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 20px;
+    height: 10px;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.cyberpunk-checkbox:checked:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.cyberpunk-checkbox-label {
+    margin-top: 1rem !important;
+    cursor: pointer;
+    user-select: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: start;
+}
+/*============================================================
+=================== CYBERPUNK CHECKBOX END ===================
+=============================================================*/
+
+
+/*============================================================
+=========================== TABLE ============================
+=============================================================*/
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    
+
+    .table-head {
+        padding: 10px;
+
+        background-color: var(--input-color);
+        font-family: var(--body-font);
+        color: var(--text-color);
+    }
+
+    .table-body {
+        text-align: center;
+        background-color: var(--input-color);
+        font-family: var(--body-font);
+        color: var(--text-color);
+
+        .modelCar-description{
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &:hover{
+            /* border: 2px solid rgb(80, 88, 113); */
+            transform: scale(1.008); 
+            box-shadow: var(--box-shadow-2);
+        }
+
+        & td {
+            height: 78px;
+            vertical-align: middle;
+        }
+    }
+    /* Esquina superior izquierda */
+    & tr:first-child th:first-child {
+        border-top-left-radius: 10px;
+    }
+    /* Esquina superior derecha */
+    & tr:first-child th:last-child {
+        border-top-right-radius: 10px;
+    }
+    /* Esquina inferior izquierda */
+    & tr:last-child td:first-child {
+        border-bottom-left-radius: 10px;
+    }
+    /* Esquina inferior derecha */
+    & tr:last-child td:last-child {
+        border-bottom-right-radius: 10px;
+    }
+}
+
+.user-table :is(th, td) {
+    padding: 5px 10px;
+    border: 1px solid rgba(128, 128, 128, 0.299);
+    border-right: none;
+    border-left: none;
+}
+
+.user-table tr:last-child td{
+    border-bottom: none;
+}
+.user-table tr:first-child th{
+    border-top: none;
+}
+
+.table-body .user-image img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.table-body .modelCar-image img {
+    width: 110px;
+    height: 75px;
+    padding: .4rem 0;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.table-body .brand-image{
+    padding: 0 0;
+}
+
+.table-body .brand-image img {
+    width: auto;
+    height: 75px;
+    padding: .4rem 0;
+    border-radius: 5%;
+    object-fit: cover;
+}
+
+.action-btn {
+    color: rgb(255, 255, 255);
+    padding: .25rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:not(:last-child) {
+        margin-right: 5px;
+    }
+
+    &.btn-danger {
+        background-color: #ff0000;
+    }
+
+    &.btn-warning {
+        background-color: #ffc107;
+    }
+}
+/*============================================================
+========================= TABLE END ==========================
+=============================================================*/
+
+/*============================================================
+==================== LOGIN/REGISTER FORM =====================
+=============================================================*/
+.main-container-forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container-img {
+    width: 100dvw;
+    height: 30dvh;
+    overflow: hidden;
+
+    position: relative;
+
+    .wall-logo-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 50%;
+        height: auto;
+        pointer-events: none;
+    }
+}
+
+.background-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+    pointer-events: none;
+    filter: brightness(0.6);
+}
+
+.container-form {
+    width: 90dvw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.box-form {
+    width: 100%;
+    margin: 4rem 0rem;
+}
+
+.info-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+    color: var(--text-color);
+}
+
+
+
+@media screen and (width > 1200px) {
+
+    .main-container-forms {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .container-img {
+        width: 50dvw;
+        height: 100dvh;
+    
+        .wall-logo-img {
+            width: auto;
+            height: 70px;
+        }
+    }
+
+    .container-form {
+        width: 50dvw;
+        height: 100dvh;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box-form {
+        width: 450px;
+        margin: 0rem;
+    }
+
+}
+
+/*============================================================
+================== LOGIN/REGISTER FORM END ===================
+=============================================================*/
+
+
+
+
+
+
+/*============================================================
+=========================== FORMS ============================
+=============================================================*/
+.form-title-container{
+    width: 90%;
+    margin-bottom: 1rem;
+}
+.main-form-container{
+    width: 90%;
+}
+/*============================================================
+========================= FORMS END ==========================
+=============================================================*/

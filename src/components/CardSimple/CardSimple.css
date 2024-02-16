@@ -1,0 +1,62 @@
+/*============================================================
+======================== CARDS SIMPLE ========================
+=============================================================*/
+.card-simple-container {
+    padding: 1rem;
+    display: flex;
+    gap: 1.5rem;
+    overflow-x:auto;
+}
+
+.card-simple {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 220px;
+    width: 220px;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: var(--box-shadow-1);
+    transition: all 300ms ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: var(--box-shadow-2);
+
+        .card-simple-header {
+            .card-simple-img {
+                transform: scale(1.01);
+            }
+            
+        }
+    }
+
+    .card-simple-header {
+        overflow: hidden;
+        
+        .card-simple-img {
+            width: 70%;
+            height: auto;
+            display: block;
+            margin: auto;
+            object-fit: cover;
+            pointer-events: none;
+            transition: all 600ms ease;
+        }
+    }
+
+    .card-simple-body {
+        text-align: center;
+        .card-simple-title {
+            font-weight: 300;
+            color: black;
+        }
+    }
+}
+/*============================================================
+====================== CARDS SIMPLE END ======================
+=============================================================*/

@@ -1,0 +1,75 @@
+/*============================================================
+========================= CAR PROFILE ========================
+=============================================================*/
+.card-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-profile {
+    background-color: var(--card-basic-color);
+    max-width: 350px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow-1);
+}
+
+.card-profile-header {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.card-profile-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+
+.card-profile-body-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-top: -53px;
+    pointer-events: none;
+    background-color: var(--card-basic-color);
+    border: 5px solid var(--card-basic-color);
+}
+
+.card-profile-body-title {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.card-profile-body-title span {
+    color: hsl(0, 0%, 59%);
+    font-weight: 400;
+    margin-left: 0.2rem;
+}
+
+.card-profile-body-text {
+    color: hsl(0, 0%, 59%);
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.card-profile-footer {
+    display: flex;
+    justify-content: space-around;
+}
+.card-profile-footer-social {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+.card-profile-footer-social p {
+    letter-spacing: 1px;
+    color: hsl(0, 0%, 59%);
+}
+/*============================================================
+======================= CAR PROFILE END ======================
+=============================================================*/

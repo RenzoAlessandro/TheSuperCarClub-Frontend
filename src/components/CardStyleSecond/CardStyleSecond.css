@@ -1,0 +1,137 @@
+/*============================================================
+======================== CAR 1 SECTION =======================
+=============================================================*/
+.card-cars-first-container {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: .75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card-cars-first {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 250px;
+    /* max-width: 480px; */
+    border-radius: 16px;
+    background: var(--card-color);
+    /* box-shadow: var(--box-shadow-1); */
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.card-first-header {
+    position: relative;
+    /* width: 480px; */
+    height: 240px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: hsl(231, 100%, 96%); */
+
+
+    .card-first-info {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .5rem;
+
+        z-index: 1;
+
+        .card-first-logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .card-first-make, 
+        .card-first-model {
+            width: 100%;
+            overflow: hidden;
+            color: var(--text-color-black);
+        }
+    }
+    
+    .card-first-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+        transition: all 300ms ease;
+    }
+}
+.card-first-body {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .6rem 1rem;
+
+    .card-first-features {
+        display: flex;
+        flex-direction: row;
+        gap: .6rem;
+        color: var(--text-color-black);
+
+        .card-first-seats,
+        .card-first-transmission,
+        .card-first-fuel,
+        .card-first-type {
+            display: flex;
+            flex-direction: row;
+            gap: .2rem;
+            align-items: center;
+            font-size: smaller;
+            font-weight: 300;
+        }
+    }
+    .card-first-price {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: var(--text-color-black);
+
+        .text-price {
+            font-size: 15px;
+        }
+    }
+}
+
+.card-first-body::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #dadada;
+}
+
+.card-cars-first:hover {
+    box-shadow: var(--box-shadow-2);
+    transform: scale(1.02) rotate(-1deg);
+
+    /* .card-first-header {
+        .card-first-img {
+            transform: scale(1.05) rotate(1deg);
+        }
+    } */
+}
+/*============================================================
+========================== CAR 1 END =========================
+=============================================================*/
+

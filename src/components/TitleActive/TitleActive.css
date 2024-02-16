@@ -1,0 +1,56 @@
+/*============================================================
+======================== TITLE ACTIVE ========================
+=============================================================*/
+.title-active {
+    width: 100%;
+    color: var(--text-color);
+}
+
+.title-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.title-form::before,
+.title-form::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+
+    background-color: var(--text-color);
+}
+
+.title-form::before {
+    width: 18px;
+    height: 18px;
+
+    background-color: var(--text-color);
+}
+
+.title-form::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+    
+}
+/*============================================================
+====================== TITLE ACTIVE END ======================
+=============================================================*/
+

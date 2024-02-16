@@ -1,0 +1,72 @@
+/*============================================================
+====================== SLIDER BRANDS SECTION =================
+=============================================================*/
+.slider-brands-container {
+    display: flex;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    align-items: center;
+}
+
+.slider-brands-container::before {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    content: "";
+    width: 10%;
+    height: 150px;
+    background: var(--body-bg-color);
+}
+
+.slider-brands-container::after {
+    position: absolute;
+    right: 0;
+    content: "";
+    width: 10%;
+    height: 150px;
+    background: var(--body-bg-color);
+}
+
+.slider-brands-container .slide-track {
+    display: flex;
+    animation: scroll 95s linear infinite;
+    -webkit-animation: scroll 95s linear infinite;
+    width: calc(250px * 16.8);
+}
+
+.slider-brands-container .slide-brand {
+    display: flex;
+}
+
+.slider-brands-container .slide-brand {
+    width: 210px;
+    height: 120px;
+    padding: 10px;
+    background-color: white;
+    pointer-events: none;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.slider-brands-container .slide-brand img {
+    margin: 0 auto;
+    filter: grayscale(100%) opacity(35%);
+}
+
+
+@keyframes scroll {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    100% {
+        -webkit-transform: translateX(calc(-270px * 16.8));
+        transform: translateX(calc(-270px * 16.8));
+    }
+}
+/*============================================================
+================== SLIDER BRANDS SECTION END =================
+=============================================================*/

@@ -1,60 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Michroma&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
 :root {
+  --title-font: 'Michroma', sans-serif;
+  --body-font: 'Jost', sans-serif;
+
+  --text-color-black:#000000;
+  --text-color-white:#ffffff;
+
+  --seats-color: #227c9d;
+  --transmission-color: #fe6d73;
+  --fuel-color: #ffcb77;
+  --type-color: #17c3b2;
+
+
+  /*************** Light Mode ***************/
+  color-scheme: light dark;
+  --header-bg-color: #fff;
+  --body-bg-color: #F2F3F5; /*#f2f2f2;*/
+  --footer-bg-color: #070B1F;/*#323a4b;*/
+
+  --text-color: #000000;
+  --text-color-reverse: #ffffff;
+  --input-color: #ffffff;
+  --button-color: #151717;
+
+  --card-basic-color: white;
+  --border-color: black;
+  --box-shadow-1: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --box-shadow-2: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  --box-shadow-3: rgba(0, 0, 0, 0.20) 0px 2px 8px 0px;
+}
+
+
+
+/*************** Dark Mode ***************/
+
+@media (prefers-color-scheme: dark) {
+  :root {
+      --header-bg-color: #03131a;
+      --body-bg-color: rgb(33,36,46);
+      --footer-bg-color: #03131a;
+
+      --text-color: #ffffff;
+      --text-color-reverse: #000000;
+      --input-color: rgb(40,45,58);
+      --button-color: rgb(105,222,210);
+
+      --card-basic-color:  rgb(40,45,58);
+      --border-color: rgb(66, 66, 66);
+
+
+      .nav-logo {
+          -webkit-filter: invert(100%); /* Safari/Chrome */
+          filter: invert(100%);
+      }
+  }
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--body-bg-color);
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/*============================================================
+=========================== BASICOS ==========================
+=============================================================*/
+
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center;
+  justify-content: center; */
+  flex-wrap:wrap;
+  width: 100%;
+  /* gap: 1rem; */
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+  flex-wrap:wrap;
+  width: 100%;
+  gap: 1rem;
+}
+
+.img-invert-color{
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+}
+
+/*============================================================
+========================= BASICOS END ========================
+=============================================================*/
+
+
+/*============================================================
+==================== CUSTOMIZE SWEETALERT 2  =================
+=============================================================*/
+.swal2-confirm {
+  background-color: var(--button-color) !important;
+}
+/*============================================================
+================== CUSTOMIZE SWEETALERT 2  END ===============
+=============================================================*/
+
+
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -64,5 +150,13 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}  */
+
+
+
+@media screen and (width < 1200px) {
+  .responsive-table{
+    overflow-x:auto;
   }
 }

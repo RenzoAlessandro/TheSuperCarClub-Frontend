@@ -1,0 +1,11 @@
+.custom-container {
+    width: 100%;
+    margin: 4rem auto;
+    max-width: 90%;
+
+    .section-divider{
+        height: 0.0625rem;
+        width: 100%;
+        background-color: rgb(197, 197, 197);
+    }
+}

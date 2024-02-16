@@ -1,0 +1,318 @@
+/*============================================================
+========================= BURGER MENU ========================
+=============================================================*/
+
+.main-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 86px;
+    z-index: 4;
+    background-color: var(--header-bg-color);
+}
+
+.input-check, 
+.input-check-user{
+    display: none;
+}
+
+.burger-menu, 
+.burger-usermenu{
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.burger-line{
+    width: 25px;
+    height: 1px;
+    position: relative;
+    background-color: var(--text-color);
+}
+
+.burger-icon{
+    color: gray;
+    font-size: 25px;
+}
+
+.burger-line::before, 
+.burger-line::after {
+    content: '';
+    width: 22px;
+    height: 1px;
+    position: absolute;
+    transform: translateY(-8px);
+    transition: .3s ease-in-out;
+    background-color: var(--text-color);
+}
+.burger-line::after {
+    transform: translateY(8px);
+}
+
+.input-check:checked ~ .burger-menu .burger-line{
+    background-color: transparent;
+}
+.input-check:checked ~ .burger-menu .burger-line::after {
+    transform: translateY(0) rotate(-45deg);
+}
+.input-check:checked ~ .burger-menu .burger-line::before {
+    transform: translateY(0) rotate(45deg);
+}
+
+
+.input-check-user:checked ~ .burger-usermenu .burger-icon {
+    color: var(--text-color);
+}
+
+
+
+.main-nav,
+.user-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 86px;
+    bottom: 0;
+    height: 0;
+    overflow: hidden;
+    transition: height .3s ease-in-out;
+    background-color: var(--header-bg-color);
+}
+
+.input-check:checked ~ .main-nav{
+    height: calc(64px * 7);
+}
+
+.input-check-user:checked ~ .user-nav{
+    height: calc(64px * 2);
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+
+    .nav-logo {
+        width: 190px;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+.nav-item {
+    list-style: none;
+    height: 64px;
+}
+
+.nav-item .nav-link {
+    padding: 1.25rem .8rem;
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--text-color);
+}
+
+.nav-item .nav-link:hover {
+    background-color: var(--button-color);
+    color: var(--text-color-reverse)
+}
+
+.nav-item:not(:last-child) {
+    border-bottom: 1px solid var(--border-color)
+}
+
+
+.user-nav{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 86px;
+    bottom: 0;
+    height: 0;
+    overflow: hidden;
+    transition: height .3s ease-in-out;
+    background-color: var(--header-bg-color);
+}
+
+
+.profile-link {
+    padding-left: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: .1rem;
+    font-size: small;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: uppercase;
+
+    .user-profile-picture {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-inline: .75rem .25rem;
+        pointer-events: none;
+    }
+}
+
+.nav-link.active {
+    background-color: var(--button-color);
+    color: var(--text-color-reverse)
+}
+
+/*============================================================
+======================= BURGER MENU END ======================
+=============================================================*/
+
+
+
+/*============================================================
+======================== USER INFO MENU ======================
+=============================================================*/
+.user-menu {
+    position: relative;
+    top: 0;
+    height: 100% !important;
+}
+
+.switch-user-item {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-item {
+    list-style: none;
+}
+
+.user-item .user-link{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 1.25rem .5rem;
+    width: 100%;
+    font-size: small;
+    text-decoration: none;
+    color: var(--text-color);
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.display-switch,
+.display-search,
+.display-info,
+.display-MyRents{
+    display: none;
+}
+/*============================================================
+====================== USER INFO MENU END ====================
+=============================================================*/
+
+
+/*============================================================
+========================== RESPONSIVE ========================
+=============================================================*/
+@media screen and (width > 1200px) {
+    .main-header {
+        justify-content: space-between;
+    }
+    .burger-menu,
+    .burger-usermenu {
+        display: none;
+    }
+    .main-nav,
+    .user-nav{
+        position: relative;
+        top: 0;
+        height: 100% !important;
+    }
+    .nav-list {
+        display: flex;
+        margin: auto;
+        height: 100%;
+    }
+
+    .nav-item{
+        height: 100%;
+    }
+    
+
+    .nav-item:not(:last-child) {
+        border-bottom: none;
+    }
+
+    .nav-item .nav-link {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        letter-spacing: 1px;
+        font-size: small;
+        color: var(--text-color)
+    }
+
+    .nav-item .nav-link:hover{
+        background-color: transparent;
+        color: var(--text-color);
+
+        -webkit-text-decoration-line:  underline;
+        -webkit-text-decoration-color: var(--text-color);
+        -webkit-text-decoration-style: solid;
+        -webkit-text-decoration-thickness: 2px;
+
+        text-decoration-line:  underline;
+        text-decoration-color: var(--text-color);
+        text-decoration-style: solid;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 5px;
+    }
+
+    .user-item .user-link:hover,
+    .user-item .profile-link:hover {
+        color: gray;
+    }
+
+    .logo-link {
+        margin: 0 1rem;
+    }
+
+    .nav-list {
+        margin-left: auto;
+
+        .display-switch{
+            display: flex;
+        }
+        .display-search,
+        .display-info,
+        .display-MyRents{
+            display: inline-block;
+        }
+
+    }
+
+    .nav-link.active {
+        background-color: transparent;
+        color: var(--text-color);
+
+        -webkit-text-decoration-line:  underline;
+        -webkit-text-decoration-color: var(--text-color);
+        -webkit-text-decoration-style: solid;
+        -webkit-text-decoration-thickness: 2px;
+
+        text-decoration-line:  underline;
+        text-decoration-color: var(--text-color);
+        text-decoration-style: solid;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 5px;
+    }
+}
