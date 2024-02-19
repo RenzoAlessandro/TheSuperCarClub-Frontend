@@ -73,7 +73,7 @@ export default function AdminUser() {
 
 						<div className="flex-row">
 							<div className="input-group">
-								<label htmlFor="inputFirstName">Nombres*</label>
+								<label className="label-form" htmlFor="inputFirstName">Nombres*</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faUser} />
 									<input
@@ -81,7 +81,7 @@ export default function AdminUser() {
 										type="text"
 										name="firstName"
 										id="inputFirstName"
-										minLength="5"
+										minLength="3"
 										maxLength="50"
 										pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+( [a-zA-ZñÑáéíóúÁÉÍÓÚ]+)*$"
 										autoFocus
@@ -92,7 +92,7 @@ export default function AdminUser() {
 							</div>
 
 							<div className="input-group">
-								<label htmlFor="inputLastName">Apellidos*</label>
+								<label className="label-form" htmlFor="inputLastName">Apellidos*</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faUser} />
 									<input
@@ -100,7 +100,7 @@ export default function AdminUser() {
 										type="text"
 										name="lastName"
 										id="inputLastName"
-										minLength="5"
+										minLength="3"
 										maxLength="50"
 										pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+( [a-zA-ZñÑáéíóúÁÉÍÓÚ]+)*$"
 										required
@@ -111,7 +111,7 @@ export default function AdminUser() {
 						</div>
 
 						<div className="input-group">
-							<label htmlFor="inputEmail">Email*</label>
+							<label className="label-form" htmlFor="inputEmail">Email*</label>
 							<div className="inputIconForm">
 								<FontAwesomeIcon icon={faAt} />
 								<input
@@ -120,7 +120,7 @@ export default function AdminUser() {
 									name="email"
 									id="inputEmail"
 									minLength="7"
-									maxLength="140"
+									maxLength="80"
 									pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$"
 									autoComplete="on"
 									required
@@ -131,7 +131,7 @@ export default function AdminUser() {
 
 						<div className="flex-row">
 							<div className="input-group">
-								<label htmlFor="inputPwd">Contraseña*</label>
+								<label className="label-form" htmlFor="inputPwd">Contraseña*</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faLock} />
 									<input
@@ -147,7 +147,7 @@ export default function AdminUser() {
 							</div>
 
 							<div className="input-group">
-								<label htmlFor="inputConfirmPwd">Confirmar Contraseña*</label>
+								<label className="label-form" htmlFor="inputConfirmPwd">Confirmar Contraseña*</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faLock} />
 									<input
@@ -164,7 +164,7 @@ export default function AdminUser() {
 						</div>
 
 						<div className="input-group">
-							<label htmlFor="inputLocation">Localidad*</label>
+							<label className="label-form" htmlFor="inputLocation">Localidad*</label>
 							<div className="inputIconForm">
 								<FontAwesomeIcon icon={faLocationDot} />
 								<select
@@ -189,7 +189,7 @@ export default function AdminUser() {
 
 						<div className="flex-row">
 							<div className="input-group">
-								<label htmlFor="inputBornDate">Cumpleaños*</label>
+								<label className="label-form" htmlFor="inputBornDate">Cumpleaños*</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faCalendarDays} />
 									<input
@@ -204,7 +204,7 @@ export default function AdminUser() {
 							</div>
 
 							<div className="input-group">
-								<label htmlFor="inputAge">Edad*</label>
+								<label className="label-form" htmlFor="inputAge">Edad*</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faCakeCandles} />
 									<input
@@ -223,7 +223,7 @@ export default function AdminUser() {
 						</div>
 
 						<div className="input-group">
-							<label htmlFor="inputProfileImg">Foto de Perfil (URL)*</label>
+							<label className="label-form" htmlFor="inputProfileImg">Foto de Perfil (URL)</label>
 							<div className="inputIconForm">
 								<FontAwesomeIcon icon={faImage} />
 								<input
@@ -231,8 +231,6 @@ export default function AdminUser() {
 									id="inputProfileImg"
 									type="url"
 									name="userImage"
-									defaultValue="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
-									required
 									{...register("userImage")}
 								/>
 							</div>

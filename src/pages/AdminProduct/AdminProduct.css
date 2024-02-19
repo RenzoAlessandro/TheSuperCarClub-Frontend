@@ -28,17 +28,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: start;
-
-    & label{
-        color: var(--text-color);
-        display: block;
-        margin: .4rem 0;
-    
-        font-weight: 500;
-        font-size: small;
-        text-transform: uppercase;
-
-    }
 }
 
 @media screen and (width > 1200px) {

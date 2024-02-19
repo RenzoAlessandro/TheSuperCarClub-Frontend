@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import CardSimple from "../CardSimple/CardSimple";
 import axios from "axios";
 import SectionTitle from "../SectionTitle/SectionTitle";
+import { useNavigate } from "react-router-dom";
+
 
 export const BrowseByMakeContainer = () => {
 	const [brands, setBrands] = useState([]);
@@ -21,11 +23,17 @@ export const BrowseByMakeContainer = () => {
 		}
 	}
 
+	const navigate = useNavigate();
+
+	function navigateClick(){
+		navigate("/models")
+	}
+
 	return (
 		<>
 			<SectionTitle title="Buscar por marca" subtitle="Más de 15 marcas" />
 
-			<section className="card-simple-container">
+			<section className="card-simple-container" onClick={navigateClick} >
 				{brands.map((brand) => {
 					return (
 						<CardSimple

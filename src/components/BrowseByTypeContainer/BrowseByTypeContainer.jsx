@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CardSimple from "../CardSimple/CardSimple";
 import SectionTitle from "../SectionTitle/SectionTitle";
+import { useNavigate } from "react-router-dom";
 
 export const BrowseByTypeContainer = () => {
 	const [types, setTypes] = useState([]);
@@ -21,10 +22,17 @@ export const BrowseByTypeContainer = () => {
 		}
 	}
 
+	const navigate = useNavigate();
+
+	function navigateClick(){
+		navigate("/models")
+	}
+
 	return (
 		<>
 			<SectionTitle title="Buscar por tipo" subtitle="Más de 5 tipos" />
-			<section className="card-simple-container">
+
+			<section className="card-simple-container" onClick={navigateClick}>
 				{types.map((type) => {
 					return (
 						<CardSimple

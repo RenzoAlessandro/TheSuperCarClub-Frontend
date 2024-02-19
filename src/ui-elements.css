@@ -305,6 +305,10 @@
         margin-right: 5px;
     }
 
+    &.btn-good {
+        background-color: #009b58;
+    }
+
     &.btn-danger {
         background-color: #ff0000;
     }
@@ -432,6 +436,16 @@
 }
 .main-form-container{
     width: 90%;
+}
+.label-form{
+    color: var(--text-color);
+    display: block;
+    margin: .4rem 0;
+
+    font-weight: 500;
+    font-size: small;
+    text-transform: uppercase;
+
 }
 /*============================================================
 ========================= FORMS END ==========================

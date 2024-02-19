@@ -23,16 +23,16 @@ export const UserTable = ({ users }) => {
 						<tr className="table-body" key={usr._id}>
 							<td className="user-image">
 								<img
-									src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
+									src="https://collaborate.pega.com/sites/default/files/pega-user-image/457/REG-456516.png"
 									alt="Avatar"
 								/>
 							</td>
-							<td className="user-name">Renzo Alessandro</td>
-							<td className="user-email">renzo@gmail.com</td>
-							<td className="user-location">San Francisco, CA</td>
-							<td className="user-age">27</td>
+							<td className="user-name">{usr.firstName}</td>
+							<td className="user-email">{usr.email}</td>
+							<td className="user-location">{usr.location}</td>
+							<td className="user-age">{usr.age}</td>
 							<td className="user-date">13/02/1996</td>
-							<td className="user-role">Administrador</td>
+							<td className="user-role">{usr.role}</td>
 							<td className="user-action">
 								<button
 									className="action-btn btn-danger"

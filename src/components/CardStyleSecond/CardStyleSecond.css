@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    height: 250px;
+    height: 220px;
     /* max-width: 480px; */
     border-radius: 16px;
     background: var(--card-color);
@@ -94,7 +94,7 @@
             flex-direction: row;
             gap: .2rem;
             align-items: center;
-            font-size: smaller;
+            font-size: 12px;
             font-weight: 300;
         }
     }

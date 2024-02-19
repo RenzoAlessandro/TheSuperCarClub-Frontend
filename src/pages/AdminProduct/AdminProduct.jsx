@@ -23,9 +23,30 @@ import { ProductTable } from "../../components/ProductTable/ProductTable";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useEffect, useState } from "react";
 const URL = import.meta.env.VITE_SERVER_URL;
 
 export default function AdminProduct() {
+	const [dbModelCars, setDbModelCars] = useState([]);
+
+	async function getModelCars() {
+		try {
+			const response = await axios.get(`${URL}/modelcars`);
+			const modelCars = response.data.modelCars;
+			setDbModelCars(modelCars);
+		} catch (error) {
+			console.log(error);
+			Swal.fire({
+				icon: "error",
+				title: "No se pudieron obtener los modelos de vehículos",
+			});
+		}
+	}
+
+	useEffect(function () {
+		getModelCars();
+	}, []);
+
 	const { register, handleSubmit } = useForm();
 
 	async function submiteData(data) {
@@ -59,7 +80,9 @@ export default function AdminProduct() {
 						<input name="id" style={{ display: "none" }} type="text" />
 						<div className="flex-row">
 							<div className="input-group">
-								<label htmlFor="inputBrand">Marca*</label>
+								<label className="label-form" htmlFor="inputBrand">
+									Marca*
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faShield} />
 									<select
@@ -97,7 +120,9 @@ export default function AdminProduct() {
 							</div>
 
 							<div className="input-group">
-								<label htmlFor="inputModel">Modelo*</label>
+								<label className="label-form" htmlFor="inputModel">
+									Modelo*
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faCar} />
 									<input
@@ -107,7 +132,7 @@ export default function AdminProduct() {
 										id="inputModel"
 										placeholder="Modelo"
 										minLength="4"
-										maxLength="50"
+										maxLength="30"
 										required
 										{...register("model")}
 									/>
@@ -115,7 +140,9 @@ export default function AdminProduct() {
 							</div>
 
 							<div className="input-group">
-								<label htmlFor="inputEngine">Motor*</label>
+								<label className="label-form" htmlFor="inputEngine">
+									Motor*
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faGear} />
 									<input
@@ -125,7 +152,7 @@ export default function AdminProduct() {
 										id="inputEngine"
 										placeholder="2.5 220CV"
 										minLength="4"
-										maxLength="50"
+										maxLength="20"
 										required
 										{...register("engine")}
 									/>
@@ -135,7 +162,9 @@ export default function AdminProduct() {
 
 						<div className="flex-row">
 							<div className="input-group">
-								<label htmlFor="selectType">Tipo*</label>
+								<label className="label-form" htmlFor="selectType">
+									Tipo*
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faSwatchbook} />
 									<select
@@ -144,18 +173,20 @@ export default function AdminProduct() {
 										id="selectType"
 										{...register("type")}
 									>
-										<option value="0">Deportivo</option>
-										<option value="1">Convertible</option>
-										<option value="2">Sedan</option>
-										<option value="3">Eléctrico</option>
-										<option value="4">Supercar</option>
-										<option value="5">SUV</option>
-										<option value="6">Ultra Luxury</option>
+										<option value="Deportivo">Deportivo</option>
+										<option value="Convertible">Convertible</option>
+										<option value="Sedan">Sedan</option>
+										<option value="Eléctrico">Eléctrico</option>
+										<option value="Supercar">Supercar</option>
+										<option value="SUV">SUV</option>
+										<option value="Ultra Luxury">Ultra Luxury</option>
 									</select>
 								</div>
 							</div>
 							<div className="input-group">
-								<label htmlFor="selectTransmission">Transmisión*</label>
+								<label className="label-form" htmlFor="selectTransmission">
+									Transmisión
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faGripHorizontal} />
 									<select
@@ -170,7 +201,9 @@ export default function AdminProduct() {
 								</div>
 							</div>
 							<div className="input-group">
-								<label htmlFor="selectFuel">Combustible*</label>
+								<label className="label-form" htmlFor="selectFuel">
+									Combustible
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faGasPump} />
 									<select
@@ -189,7 +222,9 @@ export default function AdminProduct() {
 
 						<div className="flex-row">
 							<div className="input-group">
-								<label htmlFor="inputVelocidad">Velocidad Max.*</label>
+								<label className="label-form" htmlFor="inputVelocidad">
+									Velocidad Max.
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faGaugeHigh} />
 									<input
@@ -198,16 +233,17 @@ export default function AdminProduct() {
 										name="maxSpeed"
 										id="inputVelocidad"
 										min="100"
-										max="500"
+										max="600"
 										placeholder="100"
-										required
 										{...register("maxSpeed")}
 									/>
 								</div>
 							</div>
 
 							<div className="input-group">
-								<label htmlFor="inputHP">HP*</label>
+								<label className="label-form" htmlFor="inputHP">
+									HP
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faHorse} />
 									<input
@@ -218,14 +254,15 @@ export default function AdminProduct() {
 										min="100"
 										max="1500"
 										placeholder="200"
-										required
 										{...register("horsePowerHP")}
 									/>
 								</div>
 							</div>
 
 							<div className="input-group">
-								<label htmlFor="input060MPH">0 - 60 MPH*</label>
+								<label className="label-form" htmlFor="input060MPH">
+									0 - 60 MPH
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faChartLine} />
 									<input
@@ -237,7 +274,6 @@ export default function AdminProduct() {
 										min="0.0"
 										max="10.0"
 										placeholder="0.0"
-										required
 										{...register("de0a60MPH")}
 									/>
 								</div>
@@ -246,7 +282,9 @@ export default function AdminProduct() {
 
 						<div className="flex-row">
 							<div className="input-group">
-								<label htmlFor="inputSeats">Asientos*</label>
+								<label className="label-form" htmlFor="inputSeats">
+									Asientos
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faUsers} />
 									<input
@@ -256,14 +294,15 @@ export default function AdminProduct() {
 										id="inputSeats"
 										min="1"
 										max="10"
-										placeholder="2"
-										required
+										placeholder="4"
 										{...register("seats")}
 									/>
 								</div>
 							</div>
 							<div className="input-group">
-								<label htmlFor="inputReleaseYear">Año*</label>
+								<label className="label-form" htmlFor="inputReleaseYear">
+									Año
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faCalendarDays} />
 									<input
@@ -271,22 +310,22 @@ export default function AdminProduct() {
 										type="date"
 										name="year"
 										id="inputReleaseYear"
-										required
 										{...register("year")}
 									/>
 								</div>
 							</div>
 							<div className="input-group">
-								<label htmlFor="inputColor">Color*</label>
+								<label className="label-form" htmlFor="inputColor">
+									Color
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faPalette} />
 									<input
 										className="inputIcon inputColor"
 										type="color"
-										defaultValue="#A8A8A8"
+										defaultValue="#FFFFFF"
 										name="color"
 										id="inputColor"
-										required
 										{...register("color")}
 									/>
 								</div>
@@ -295,7 +334,9 @@ export default function AdminProduct() {
 
 						<div className="flex-row">
 							<div className="input-group">
-								<label htmlFor="inputRatingCount">Calificación*</label>
+								<label className="label-form" htmlFor="inputRatingCount">
+									Calificación
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faStar} />
 									<input
@@ -306,14 +347,15 @@ export default function AdminProduct() {
 										step="1"
 										min="0"
 										max="5"
-										placeholder="2"
-										required
+										placeholder="0"
 										{...register("ratingCount")}
 									/>
 								</div>
 							</div>
 							<div className="input-group">
-								<label htmlFor="inputPrice24h">Precio/24h ($)*</label>
+								<label className="label-form" htmlFor="inputPrice24h">
+									Precio/24h ($)*
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faDollarSign} />
 									<input
@@ -321,7 +363,8 @@ export default function AdminProduct() {
 										type="number"
 										name="price24h"
 										id="inputPrice24h"
-										min="1"
+										min="100"
+										max="1500"
 										placeholder="850"
 										required
 										{...register("price24h")}
@@ -330,7 +373,9 @@ export default function AdminProduct() {
 							</div>
 						</div>
 						<div className="input-group">
-							<label htmlFor="inputCarImg">Imagen del Vehículo (URL)*</label>
+							<label className="label-form" htmlFor="inputCarImg">
+								Imagen del Vehículo (URL)
+							</label>
 							<div className="inputIconForm">
 								<FontAwesomeIcon icon={faImage} />
 								<input
@@ -338,21 +383,21 @@ export default function AdminProduct() {
 									id="inputCarImg"
 									type="url"
 									name="carImage"
-									defaultValue="https://newsroom.porsche.com/.imaging/mte/porsche-templating-theme/image_1290x726/dam/ES-PLA-local/2022/Vehiculos/El-nuevo-Porsche-911-Turbo-S-llega-Ecuador/PLA22_1125_fine.jpg/jcr:content/PLA22_1125_fine.jpg"
-									required
 									{...register("carImage")}
 								/>
 							</div>
 						</div>
 						<div className="input-group">
-							<label htmlFor="inputDescription">Descripción*</label>
+							<label className="label-form" htmlFor="inputDescription">
+								Descripción
+							</label>
 							<textarea
 								id="inputDescription"
 								className="textareaSimple"
 								name="description"
 								rows="6"
 								cols="50"
-								placeholder="Escribe algo aquí..."
+								placeholder="Escribe la descripción aquí..."
 								{...register("description")}
 							></textarea>
 						</div>
@@ -416,7 +461,7 @@ export default function AdminProduct() {
 					></input>
 				</div>
 
-				<ProductTable />
+				<ProductTable modelCars={dbModelCars} />
 			</div>
 		</div>
 	);
