@@ -147,14 +147,14 @@ export default function ModelsCar() {
 						<label className="label-form" htmlFor="selectType">
 							Rango de Precios
 						</label>
-						<input type="range" />
+						<input className="custon-range" type="range" />
 					</div>
 
 					<div className="input-group">
 						<label className="label-form" htmlFor="selectType">
 							Año
 						</label>
-						<input type="range" />
+						<input className="custon-range" type="range" />
 					</div>
 
 					<div className="input-group">

@@ -7,7 +7,7 @@
 }
 
 .modelcar-container{
-    background-color: var(--card-basic-color);
+    background-color: var(--background-basic-color);
     border-radius: 13px;
     padding: 0.5rem;
 }

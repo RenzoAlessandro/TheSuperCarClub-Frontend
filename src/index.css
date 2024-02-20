@@ -32,6 +32,8 @@
   --button-color: #151717;
 
   --card-basic-color: white;
+  --background-basic-color: white;
+  --range-dot: #151717; 
   --border-color: black;
   --box-shadow-1: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   --box-shadow-2: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -54,6 +56,8 @@
       --button-color: rgb(105,222,210);
 
       --card-basic-color:  rgb(40,45,58);
+      --background-basic-color: rgb(49, 54, 66);
+      --range-dot:rgb(105,222,210);
       --border-color: rgb(66, 66, 66);
 
 
