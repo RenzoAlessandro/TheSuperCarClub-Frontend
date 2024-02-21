@@ -33,6 +33,7 @@ export default function AdminProduct() {
 		try {
 			const response = await axios.get(`${URL}/modelcars`);
 			const modelCars = response.data.modelCars;
+			console.log(modelCars)
 			setDbModelCars(modelCars);
 		} catch (error) {
 			console.log(error);
@@ -53,11 +54,18 @@ export default function AdminProduct() {
 		try {
 			const modelCar = await axios.post(`${URL}/modelcars`, data);
 			console.log(modelCar);
+			Swal.fire({
+				position: "top-end",
+				icon: "success",
+				title: "Se registro el modelo de auto",
+				showConfirmButton: false,
+				timer: 1500
+			});
 		} catch (error) {
 			console.log(error);
 			Swal.fire({
 				icon: "error",
-				title: "No se creo el modelo",
+				title: "No se registro el modelo de auto",
 				text: "Alguno de los datos ingresados no es correcto!",
 			});
 		}
@@ -223,7 +231,7 @@ export default function AdminProduct() {
 						<div className="flex-row">
 							<div className="input-group">
 								<label className="label-form" htmlFor="inputVelocidad">
-									Velocidad Max.
+									Velocidad Max.*
 								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faGaugeHigh} />
@@ -235,6 +243,7 @@ export default function AdminProduct() {
 										min="100"
 										max="600"
 										placeholder="100"
+										required
 										{...register("maxSpeed")}
 									/>
 								</div>
@@ -242,7 +251,7 @@ export default function AdminProduct() {
 
 							<div className="input-group">
 								<label className="label-form" htmlFor="inputHP">
-									HP
+									HP*
 								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faHorse} />
@@ -254,6 +263,7 @@ export default function AdminProduct() {
 										min="100"
 										max="1500"
 										placeholder="200"
+										required
 										{...register("horsePowerHP")}
 									/>
 								</div>
@@ -261,7 +271,7 @@ export default function AdminProduct() {
 
 							<div className="input-group">
 								<label className="label-form" htmlFor="input060MPH">
-									0 - 60 MPH
+									0 - 60 MPH*
 								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faChartLine} />
@@ -274,6 +284,7 @@ export default function AdminProduct() {
 										min="0.0"
 										max="10.0"
 										placeholder="0.0"
+										required
 										{...register("de0a60MPH")}
 									/>
 								</div>
@@ -283,7 +294,7 @@ export default function AdminProduct() {
 						<div className="flex-row">
 							<div className="input-group">
 								<label className="label-form" htmlFor="inputSeats">
-									Asientos
+									Asientos*
 								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faUsers} />
@@ -295,13 +306,14 @@ export default function AdminProduct() {
 										min="1"
 										max="10"
 										placeholder="4"
+										required
 										{...register("seats")}
 									/>
 								</div>
 							</div>
 							<div className="input-group">
 								<label className="label-form" htmlFor="inputReleaseYear">
-									Año
+									Año*
 								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faCalendarDays} />
@@ -310,6 +322,7 @@ export default function AdminProduct() {
 										type="date"
 										name="year"
 										id="inputReleaseYear"
+										required
 										{...register("year")}
 									/>
 								</div>
@@ -335,7 +348,7 @@ export default function AdminProduct() {
 						<div className="flex-row">
 							<div className="input-group">
 								<label className="label-form" htmlFor="inputRatingCount">
-									Calificación
+									Calificación*
 								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faStar} />
@@ -348,6 +361,7 @@ export default function AdminProduct() {
 										min="0"
 										max="5"
 										placeholder="0"
+										required
 										{...register("ratingCount")}
 									/>
 								</div>
@@ -383,13 +397,14 @@ export default function AdminProduct() {
 									id="inputCarImg"
 									type="url"
 									name="carImage"
+									defaultValue="https://banner2.cleanpng.com/20190425/pv/kisspng-car-portable-network-graphics-computer-icons-vecto-sedan-car-model-svg-png-icon-free-download-1-7-9-5cc26021e6e465.3158713415562424659457.jpg"
 									{...register("carImage")}
 								/>
 							</div>
 						</div>
 						<div className="input-group">
 							<label className="label-form" htmlFor="inputDescription">
-								Descripción
+								Descripción*
 							</label>
 							<textarea
 								id="inputDescription"
@@ -398,6 +413,7 @@ export default function AdminProduct() {
 								rows="6"
 								cols="50"
 								placeholder="Escribe la descripción aquí..."
+								required
 								{...register("description")}
 							></textarea>
 						</div>
