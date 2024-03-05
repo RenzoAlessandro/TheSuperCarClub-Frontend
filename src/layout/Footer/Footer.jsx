@@ -6,7 +6,7 @@ import {
 	faSquareInstagram,
 	faSquareXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import logoTheSupercarClub from "../../assets/TheSupercarClub.png";
+import logoTheSupercarClub from "../../assets/TheSuperCarClub.webp";
 
 import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 

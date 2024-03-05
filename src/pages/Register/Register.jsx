@@ -1,6 +1,6 @@
-import backgroundImg01 from "../../assets/forms/forms-03.jpg";
-import backgroundImg02 from "../../assets/forms/forms-02.jpg";
-import logoTheSupercarClub from "../../assets/TheSupercarClub.png";
+import backgroundImg01 from "../../assets/forms/forms-03.webp";
+import backgroundImg02 from "../../assets/forms/forms-02.webp";
+import logoTheSupercarClub from "../../assets/TheSuperCarClub.webp";
 import TitleActive from "../../components/TitleActive/TitleActive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
