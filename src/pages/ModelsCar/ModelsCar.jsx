@@ -4,6 +4,8 @@ import axios from "axios";
 import CardStyleSecond from "../../components/CardStyleSecond/CardStyleSecond";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+	faArrowLeft,
+	faArrowRight,
 	faCalendarDays,
 	faCar,
 	faGasPump,
@@ -12,19 +14,131 @@ import {
 	faShield,
 	faSwatchbook,
 } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 const URL = import.meta.env.VITE_SERVER_URL;
 
 export default function ModelsCar() {
 	const [modelCars, setModelCars] = useState([]);
+	const [dbBrands, setBrands] = useState([]);
+	const [dbLocations, setDbLocations] = useState([]);
+	const [dbtransmissions, setTransmissions] = useState([]);
+	const [dbFuels, setFuels] = useState([]);
+	const [dbTypes, setTypes] = useState([]);
+
+	const [totalButtons, setTotalButtons] = useState(0);
+	const [limit, setLimit] = useState(12);
+
+	async function getModelCars(page = 0) {
+		try {
+			const response = await axios.get(
+				`${URL}/modelcars?page=${page}&limit=${limit}`,
+			);
+			setModelCars(response.data.modelCars);
+			const total = response.data.total;
+			setTotalButtons(total);
+		} catch (error) {
+			console.log(error);
+			Swal.fire({
+				icon: "error",
+				title: "No se pudieron obtener los modelos de vehículos",
+			});
+		}
+	}
+
+	async function getBrands() {
+		try {
+			const response = await axios.get(`${URL}/brands`);
+			const brands = response.data.brands;
+			setBrands(brands);
+		} catch (error) {
+			console.log(error);
+			Swal.fire({
+				icon: "error",
+				title: "No se pudieron obtener las marcas de vehículos",
+			});
+		}
+	}
+
+	async function getLocations() {
+		try {
+			const response = await axios.get(`${URL}/locations`);
+			const locations = response.data.locations;
+			setDbLocations(locations);
+		} catch (error) {
+			console.log(error);
+			Swal.fire({
+				icon: "error",
+				title: "No se pudieron obtener las ubicaciones",
+			});
+		}
+	}
+
+	async function getTransmissions() {
+		try {
+			const response = await axios.get(`${URL}/transmissions`);
+			const transmissions = response.data.transmissions;
+			setTransmissions(transmissions);
+		} catch (error) {
+			console.log(error);
+			Swal.fire({
+				icon: "error",
+				title: "No se pudieron obtener los tipos de transmisiones de vehículos",
+			});
+		}
+	}
+
+	async function getFuels() {
+		try {
+			const response = await axios.get(`${URL}/fuels`);
+			const fuels = response.data.fuels;
+			setFuels(fuels);
+		} catch (error) {
+			console.log(error);
+			Swal.fire({
+				icon: "error",
+				title: "No se pudieron obtener los tipos de transmisiones de vehículos",
+			});
+		}
+	}
+
+	async function getTypeCars() {
+		try {
+			const response = await axios.get(`${URL}/types`);
+			const typeCars = response.data.typesCar;
+			setTypes(typeCars);
+		} catch (error) {
+			console.log(error);
+			Swal.fire({
+				icon: "error",
+				title: "No se pudieron obtener los tipos de vehículos",
+			});
+		}
+	}
 
 	useEffect(function () {
 		getModelCars();
+		getBrands();
+		getLocations();
+		getFuels();
+		getTransmissions();
+		getTypeCars();
 	}, []);
 
-	async function getModelCars() {
+	async function handleSearch(e) {
 		try {
-			const response = await axios.get(`${URL}/modelcars`);
-			setModelCars(response.data.modelCars);
+			const search = e.target.value;
+
+			if (!search) {
+				getModelCars();
+			}
+
+			if (search.length <= 3) {
+				return;
+			}
+
+			const response = await axios.get(`${URL}/modelcars/search/${search}`);
+			const modelCars = response.data.modelCars;
+			setModelCars(modelCars);
 		} catch (error) {
 			console.log(error);
 		}
@@ -42,36 +156,17 @@ export default function ModelsCar() {
 							<div className="inputIconForm">
 								<FontAwesomeIcon icon={faShield} />
 								<select className="inputIcon" name="brand" id="inputBrand">
-									<option value="Alfa Romeo">Alfa Romeo</option>
-									<option value="Aston Martin">Aston Martin</option>
-									<option value="Audi">Audi</option>
-									<option value="Bentley">Bentley</option>
-									<option value="BMW">BMW</option>
-									<option value="Bugatti">Bugatti</option>
-									<option value="Chevrolet">Chevrolet</option>
-									<option value="Corvette">Corvette</option>
-									<option value="Dodge">Dodge</option>
-									<option value="Ferrari">Ferrari</option>
-									<option value="Ford">Ford</option>
-									<option value="Jaguar">Jaguar</option>
-									<option value="Koenigsegg">Koenigsegg</option>
-									<option value="Lamborghini">Lamborghini</option>
-									<option value="Maserati">Maserati</option>
-									<option value="Mazda">Mazda</option>
-									<option value="McLaren">McLaren</option>
-									<option value="Mercedes Benz">Mercedes Benz</option>
-									<option value="Mini Cooper">Mini Cooper</option>
-									<option value="Nissan">Nissan</option>
-									<option value="Pagani">Pagani</option>
-									<option value="Porsche">Porsche</option>
-									<option value="Rolls Royce">Rolls Royce</option>
-									<option value="Tesla">Tesla</option>
+									{dbBrands.map((brand) => (
+										<option key={brand._id} value={brand._id}>
+											{brand.brand}
+										</option>
+									))}
 								</select>
 							</div>
 						</div>
 
 						<div className="input-group">
-							<label className="label-form" htmlFor="inputModel">
+							<label className="label-form" htmlFor="searchModelCar">
 								Modelo de Auto
 							</label>
 							<div className="inputIconForm">
@@ -79,12 +174,9 @@ export default function ModelsCar() {
 								<input
 									className="inputIcon"
 									type="text"
-									name="model"
-									id="inputModel"
-									placeholder="Modelo"
-									minLength="4"
-									maxLength="30"
-									required
+									id="searchModelCar"
+									placeholder="Buscar por modelo..."
+									onKeyUp={handleSearch}
 								/>
 							</div>
 						</div>
@@ -100,16 +192,11 @@ export default function ModelsCar() {
 									name="location"
 									id="inputLocation"
 								>
-									<option value="New York, NY">New York, NY</option>
-									<option value="Los Angeles, CA">Los Angeles, CA</option>
-									<option value="Miami, FL">Miami, FL</option>
-									<option value="Chicago, IL">Chicago, IL</option>
-									<option value="Houston, TX">Houston, TX</option>
-									<option value="San Francisco, CA">San Francisco, CA</option>
-									<option value="Boston, MA">Boston, MA</option>
-									<option value="Dallas, TX">Dallas, TX</option>
-									<option value="San Diego, CA">San Diego, CA</option>
-									<option value="Denver, CO">Denver, CO</option>
+									{dbLocations.map((location) => (
+										<option key={location._id} value={location._id}>
+											{location.location}
+										</option>
+									))}
 								</select>
 							</div>
 						</div>
@@ -164,13 +251,11 @@ export default function ModelsCar() {
 						<div className="inputIconForm">
 							<FontAwesomeIcon icon={faSwatchbook} />
 							<select className="inputIcon" name="type" id="selectType">
-								<option value="Deportivo">Deportivo</option>
-								<option value="Convertible">Convertible</option>
-								<option value="Sedan">Sedan</option>
-								<option value="Eléctrico">Eléctrico</option>
-								<option value="Supercar">Supercar</option>
-								<option value="SUV">SUV</option>
-								<option value="Ultra Luxury">Ultra Luxury</option>
+								{dbTypes.map((type) => (
+									<option key={type._id} value={type._id}>
+										{type.type}
+									</option>
+								))}
 							</select>
 						</div>
 					</div>
@@ -186,8 +271,11 @@ export default function ModelsCar() {
 								name="transmission"
 								id="selectTransmission"
 							>
-								<option value="Mecánico">Mecánico</option>
-								<option value="Automático">Automático</option>
+								{dbtransmissions.map((transmission) => (
+									<option key={transmission._id} value={transmission._id}>
+										{transmission.transmission}
+									</option>
+								))}
 							</select>
 						</div>
 					</div>
@@ -199,9 +287,11 @@ export default function ModelsCar() {
 						<div className="inputIconForm">
 							<FontAwesomeIcon icon={faGasPump} />
 							<select className="inputIcon" name="fuel" id="selectFuel">
-								<option value="Gasolina">Gasolina</option>
-								<option value="Diesel">Diesel</option>
-								<option value="Eléctrico">Eléctrico</option>
+								{dbFuels.map((fuel) => (
+									<option key={fuel._id} value={fuel._id}>
+										{fuel.fuel}
+									</option>
+								))}
 							</select>
 						</div>
 					</div>
@@ -214,6 +304,42 @@ export default function ModelsCar() {
 							return <CardStyleSecond key={modelCar._id} modelCar={modelCar} />;
 						})}
 					</section>
+					<div className="pagination-container">
+						<div className="pagination-page">
+							<ul className="pagination modal-1">
+								<li>
+									<button onClick={null}>
+										{" "}
+										<FontAwesomeIcon icon={faArrowLeft} />{" "}
+									</button>
+								</li>
+								{Array.from({ length: Math.ceil(totalButtons / limit) }).map(
+									(_, idx) => (
+										<li key={idx}>
+											<button onClick={() => getModelCars(idx)}>
+												{idx + 1}
+											</button>
+										</li>
+									),
+								)}
+								<li>
+									<button onClick={null}>
+										{" "}
+										<FontAwesomeIcon icon={faArrowRight} />{" "}
+									</button>
+								</li>
+							</ul>
+						</div>
+						<div className="pagination-show">
+							Mostrar
+							<select onChange={(e) => setLimit(e.target.value)}>
+								<option value={12}>12</option>
+								<option value={20}>20</option>
+								<option value={30}>30</option>
+							</select>
+							por página
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

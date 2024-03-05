@@ -27,7 +27,7 @@
 }
 
 .results-container{
-    flex: 4 1;
+    flex: 5 1;
 }
 
 @media screen and (width > 1200px) {

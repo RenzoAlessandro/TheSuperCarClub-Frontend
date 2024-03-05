@@ -75,12 +75,9 @@ export default function AboutUs() {
 						name="Renzo Alessandro"
 						age="27"
 						country="Perú"
-						featureNameFirst="HTML5"
-						featureValueFirst="2 años"
-						featureNameSecond="CSS3"
-						featureValueSecond="2 años"
-						featureNameThird="JS"
-						featureValueThird="2 años"
+						featureNameFirst="Linkedin"
+						featureNameSecond="Email"
+						featureNameThird="Github"
 					/>
 				</div>
 			</div>

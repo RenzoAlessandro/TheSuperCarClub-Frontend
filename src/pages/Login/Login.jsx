@@ -5,13 +5,10 @@ import TitleActive from "../../components/TitleActive/TitleActive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
-const URL = import.meta.env.VITE_SERVER_URL;
+import { useUser } from "../../context/UserContext";
 
 export default function Login() {
-	const navigate = useNavigate();
+	const { login } = useUser();
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -23,33 +20,6 @@ export default function Login() {
 		};
 
 		login(data);
-	}
-
-	async function login(data) {
-		try {
-			const response = await axios.post(`${URL}/login`, data);
-			const { token, user } = response.data;
-			localStorage.setItem("token", token);
-			localStorage.setItem("currenUser", JSON.stringify(user));
-
-			Swal.fire({
-				position: "top-end",
-				icon: "success",
-				title: "Iniciando Sesión",
-				text: "Será redireccionado en breve!",
-				showConfirmButton: false,
-				timer: 1500,
-			}).then(() => {
-				navigate("/");
-			});
-		} catch (error) {
-			console.log(error);
-			Swal.fire({
-				icon: "error",
-				title: "Oops...",
-				text: "Alguno de los datos ingresados no es correcto!",
-			});
-		}
 	}
 
 	return (
@@ -122,7 +92,8 @@ export default function Login() {
 
 							<div className="info-form">
 								<small className="message">
-									¿No tienes una cuenta? <a href="#">Regístrate ahora</a>
+									¿No tienes una cuenta?{" "}
+									<a href="/register">Regístrate ahora</a>
 								</small>
 								<small className="message">
 									<b>* CAMPOS REQUERIDOS</b>

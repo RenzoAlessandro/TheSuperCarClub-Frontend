@@ -19,6 +19,7 @@ export const LINKS = [
 		path: "/contact",
 		text: "Contacto",
 	},
+
 	{
 		path: "/user-admin",
 		text: "User Admin",
@@ -39,5 +40,9 @@ export const USERLINKS = [
 	{
 		path: "/login",
 		text: "Iniciar Sesión",
+	},
+	{
+		path: "/logout",
+		text: "Cerrar Sesión",
 	},
 ];

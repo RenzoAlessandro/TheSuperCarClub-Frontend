@@ -25,11 +25,15 @@
   --header-bg-color: #fff;
   --body-bg-color: #F2F3F5; /*#f2f2f2;*/
   --footer-bg-color: #070B1F;/*#323a4b;*/
+  --detail-body-bg-color: #F2F3F5;
+  --detail-footer-bg-color: #2F3542;
 
   --text-color: #000000;
   --text-color-reverse: #ffffff;
   --input-color: #ffffff;
+  --input-disabled-color: rgb(195, 195, 195);
   --button-color: #151717;
+  --button-header-hover-color: rgb(120, 120, 120);
 
   --card-basic-color: white;
   --background-basic-color: white;
@@ -49,11 +53,15 @@
       --header-bg-color: #03131a;
       --body-bg-color: rgb(33,36,46);
       --footer-bg-color: #03131a;
+      --detail-body-bg-color: #CED6E0;
+      --detail-footer-bg-color: #2F3542;
 
       --text-color: #ffffff;
       --text-color-reverse: #000000;
       --input-color: rgb(40,45,58);
+      --input-disabled-color: rgb(56, 65, 89);
       --button-color: rgb(105,222,210);
+      --button-header-hover-color:  rgb(164, 229, 222);
 
       --card-basic-color:  rgb(40,45,58);
       --background-basic-color: rgb(49, 54, 66);
@@ -124,6 +132,12 @@ body {
 =============================================================*/
 .swal2-confirm {
   background-color: var(--button-color) !important;
+  color: var(--text-color-reverse) !important;
+}
+
+.swal2-popup{
+  background-color: var(--card-basic-color) !important;
+  color: var(--text-color) !important;
 }
 /*============================================================
 ================== CUSTOMIZE SWEETALERT 2  END ===============
@@ -157,10 +171,13 @@ body {
   }
 }  */
 
-
-
-@media screen and (width < 1200px) {
+/* @media screen and (width > 1200px) {
   .responsive-table{
-    overflow-x:auto;
+    flex: 1;
   }
+} */
+
+
+.responsive-table{
+  overflow-x:auto;
 }

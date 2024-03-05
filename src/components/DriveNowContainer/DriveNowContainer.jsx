@@ -11,11 +11,21 @@ export const DriveNowContainer = () => {
 		getModelCars();
 	}, []);
 
-	async function getModelCars() {
+	async function getModelCars(page = 0) {
 		try {
-			const response = await axios.get(`${URL}/modelcars`); 
-			console.log(response)
-			setModelCars(response.data.modelCars);
+			const response = await axios.get(`${URL}/modelcars`);
+			const allModelCars = response.data.modelCars;
+
+			// Solo mostramos los que tienen la propiedad de Active en TRUE
+			const arrayModelCarsFiltrados = allModelCars.filter((modelCarFilter) => {
+				if (modelCarFilter.active === true) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+
+			setModelCars(arrayModelCarsFiltrados);
 		} catch (error) {
 			console.log(error);
 		}

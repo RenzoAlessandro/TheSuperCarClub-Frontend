@@ -1,6 +1,4 @@
 import "./CardStyleThird.css";
-import isoTipo from "../../assets/brands/isotipo-Lamborghini.webp";
-// import autoImg from "../../assets/modelsCars/Lamborghini/Lamborguini-Huracan-Evo-Spider.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faUser,
@@ -8,26 +6,36 @@ import {
 	faDroplet,
 	faRetweet,
 } from "@fortawesome/free-solid-svg-icons";
+import { useOrder } from "../../context/OrderContext";
+import imageNotAvailable from "../../assets/defaults/no-image.png";
+import { Link } from "react-router-dom";
+const URL = import.meta.env.VITE_SERVER_URL;
 
 export const CardStyleThird = ({ modelCar }) => {
+	const { addItem } = useOrder();
+
 	return (
 		<article className="card-cars-second">
 			<header className="card-cars-second-header">
 				<div className="card-second-info">
 					<img
 						className="card-second-logo"
-						src={isoTipo}
+						src={modelCar.brand.isoTipo}
 						alt="Logo Alfa Romeo"
 					/>
 					<div className="card-second-name">
-						<h2 className="card-second-make">{modelCar.brand}</h2>
+						<h2 className="card-second-make">{modelCar.brand.brand}</h2>
 						<p className="card-second-model">{modelCar.model}</p>
 					</div>
 				</div>
 				<img
 					className="card-second-img"
-					src="https://www.bmw.com.pe/content/dam/bmw/common/all-models/m-series/series-overview/bmw-m-series-seo-overview-ms-04.jpg"
-					alt={modelCar.model}
+					src={
+						modelCar.carImage
+							? `${URL}/images/modelsCars/${modelCar.carImage}`
+							: imageNotAvailable
+					}
+					alt={`Modelo ${modelCar.model}`}
 				/>
 			</header>
 			<div className="card-second-body">
@@ -38,15 +46,15 @@ export const CardStyleThird = ({ modelCar }) => {
 					</div>
 					<div className="card-tag card-second-transmission">
 						<FontAwesomeIcon icon={faRetweet} />
-						<p>{modelCar.transmission}</p>
+						<p>{modelCar.transmission.transmission}</p>
 					</div>
 					<div className="card-tag card-second-fuel">
 						<FontAwesomeIcon icon={faDroplet} />
-						<p>{modelCar.fuel}</p>
+						<p>{modelCar.fuel.fuel}</p>
 					</div>
 					<div className="card-tag card-second-type">
 						<FontAwesomeIcon icon={faCarSide} />
-						<p>{modelCar.type}</p>
+						<p>{modelCar.type.type}</p>
 					</div>
 				</div>
 				<p className="card-second-description">{modelCar.description}</p>
@@ -59,11 +67,14 @@ export const CardStyleThird = ({ modelCar }) => {
 				</div>
 			</div>
 			<footer className="card-second-footer">
-				<a className="card-second-btn" onClick={null}>
+				<Link
+					className="card-second-btn"
+					to={`/product-detail/${modelCar._id}`}
+				>
 					Ver más
-				</a>
-				<button className="card-second-btn" onClick={null}>
-					Alquilar
+				</Link>
+				<button className="card-second-btn" onClick={() => addItem(modelCar)}>
+					Rentar
 				</button>
 			</footer>
 		</article>

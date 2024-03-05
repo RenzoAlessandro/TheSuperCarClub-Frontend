@@ -1,22 +1,25 @@
 import "./Header.css";
-import { LINKS, USERLINKS } from "../../links";
+import { LINKS } from "../../links";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faMagnifyingGlass,
-	faCircleInfo,
-	faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 import logoTheSupercarClub from "../../assets/TheSupercarClub.webp";
 import SwitchMode from "../../components/SwitchMode/SwitchMode";
+import { useUser } from "../../context/UserContext";
+import defaultPictureProfile from "../../assets/defaults/default-picture-profile.png";
+import { useOrder } from "../../context/OrderContext";
+const URL = import.meta.env.VITE_SERVER_URL;
 
 export const numLinks = 2;
 
 export default function Header() {
-	const isAdmin = true;
-	const avaibleLinks = LINKS.filter((link) => isAdmin || !link.admin);
-	const avaibleUserLinks = USERLINKS.filter((link) => isAdmin || !link.admin);
+	const { user, admin, logout } = useUser();
+
+	const avaibleLinks = LINKS.filter((link) => admin || !link.admin);
+
+	const { totalItems, toggleMenu } = useOrder();
+	// const avaibleUserLinks = USERLINKS.filter((link) => isAdmin || !link.admin);
 
 	return (
 		<header className="main-header">
@@ -64,25 +67,79 @@ export default function Header() {
 					<li className="display-switch switch-user-item">
 						<SwitchMode />
 					</li>
-					<li className="display-search user-item">
+					<li className="display-MyRents user-item icon-container">
 						<a
-							className="user-link"
-							href="/pages/login/login.html"
-							title="Buscar modelo"
+							className="user-link cart-icon"
+							title="Mis Rentas"
+							data-count={totalItems}
+							onClick={() => toggleMenu()}
 						>
-							<FontAwesomeIcon icon={faMagnifyingGlass} />
+							<FontAwesomeIcon icon={faCartShopping} />
 						</a>
 					</li>
-					<li className="display-info user-item">
-						<a
-							className="user-link"
-							href="/pages/login/login.html"
-							title="información"
-						>
-							<FontAwesomeIcon icon={faCircleInfo} />
-						</a>
-					</li>
-					{avaibleUserLinks.map((userlink) => (
+					{user ? (
+						<>
+							<li className="nav-item">
+								<NavLink
+									className={({ isActive }) =>
+										isActive ? "nav-link active" : "nav-link"
+									}
+									to="/orders"
+								>
+									Ordenes
+								</NavLink>
+							</li>
+							<li className="nav-item">
+								<button onClick={() => logout()} className="nav-link">
+									Cerrar Sesión
+								</button>
+							</li>
+							<li className="nav-item profile-link">
+								<NavLink
+									className={({ isActive }) =>
+										isActive ? "nav-link active" : "nav-link"
+									}
+									to="/profile"
+								>
+									{user.firstName}
+								</NavLink>
+								<img
+									className="user-profile-picture"
+									src={
+										user.userImage
+											? `${URL}/images/users/${user.userImage}`
+											: defaultPictureProfile
+									}
+									alt={`${user.firstName} profile picture`}
+								/>
+							</li>
+						</>
+					) : (
+						<>
+							<li className="nav-item">
+								<NavLink
+									className={({ isActive }) =>
+										isActive ? "nav-link active" : "nav-link"
+									}
+									to="/register"
+								>
+									Registro
+								</NavLink>
+							</li>
+							<li className="nav-item">
+								<NavLink
+									className={({ isActive }) =>
+										isActive ? "nav-link active" : "nav-link"
+									}
+									to="/login"
+								>
+									Iniciar Sesión
+								</NavLink>
+							</li>
+						</>
+					)}
+
+					{/* {avaibleUserLinks.map((userlink) => (
 						<li className="nav-item" key={userlink.path}>
 							<NavLink
 								className={({ isActive }) =>
@@ -93,7 +150,7 @@ export default function Header() {
 								{userlink.text}
 							</NavLink>
 						</li>
-					))}
+					))} */}
 				</ul>
 			</div>
 		</header>

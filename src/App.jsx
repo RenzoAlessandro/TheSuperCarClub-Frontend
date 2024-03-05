@@ -12,11 +12,16 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Footer from "./layout/Footer/Footer";
 import AdminRoute from "./guard/AdminRoute/AdminRoute";
+import Profile from "./pages/Profile/Profile";
+import { Order } from "./pages/Order/Order";
+import { ProductDetail } from "./pages/ProductDetail/ProductDetail";
+import { Cart } from "./layout/Cart/Cart";
 
 function App() {
 	return (
 		<>
 			<Header />
+			<Cart />
 
 			<main className="main-container">
 				<Routes>
@@ -25,6 +30,8 @@ function App() {
 					<Route path="/gallery" element={<Gallery />} />
 					<Route path="/about-us" element={<AboutUs />} />
 					<Route path="/contact" element={<Contact />} />
+					<Route path="/orders" element={<Order />} />
+					<Route path="/product-detail/:id" element={<ProductDetail />} />
 					<Route
 						path="/user-admin"
 						element={
@@ -45,6 +52,7 @@ function App() {
 					/>
 					<Route path="/register" element={<Register />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/profile" element={<Profile />} />
 				</Routes>
 			</main>
 

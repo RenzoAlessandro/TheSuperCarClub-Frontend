@@ -66,9 +66,10 @@
     margin-bottom: 1rem;
     color: var(--text-color);
 }
-.card-profile-footer-social p {
+.card-profile-footer-social a {
+    text-decoration: none;
     letter-spacing: 1px;
-    color: hsl(0, 0%, 59%);
+    color: var(--text-color);
 }
 /*============================================================
 ======================= CAR PROFILE END ======================

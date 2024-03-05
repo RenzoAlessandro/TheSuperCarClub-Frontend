@@ -61,22 +61,22 @@ export default function Footer() {
 					<h4>Compañía</h4>
 					<ul className="footer-list">
 						<li className="footer-item">
-							<a className="footer-link" href="/index.html">
+							<a className="footer-link" href="/">
 								Inicio
 							</a>
 						</li>
 						<li className="footer-item">
-							<a className="footer-link" href="/pages/about-us/about-us.html">
+							<a className="footer-link" href="/about-us">
 								Acerca de
 							</a>
 						</li>
 						<li className="footer-item">
-							<a className="footer-link" href="#">
+							<a className="footer-link" href="/models">
 								Servicio
 							</a>
 						</li>
 						<li className="footer-item">
-							<a className="footer-link" href="/pages/contact/contact.html">
+							<a className="footer-link" href="/contact">
 								Contacto
 							</a>
 						</li>

@@ -15,15 +15,69 @@ import {
 	faLock,
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useUser } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
+const URL = import.meta.env.VITE_SERVER_URL;
 
 export default function Register() {
 	const { register, handleSubmit } = useForm();
+	const [dbLocations, setDbLocations] = useState([]);
+	const { logout } = useUser();
+	const navigate = useNavigate();
+
+	async function getLocations() {
+		try {
+			const response = await axios.get(`${URL}/locations`);
+			const locations = response.data.locations;
+			setDbLocations(locations);
+		} catch (error) {
+			console.log(error);
+			Swal.fire({
+				icon: "error",
+				title: "No se pudieron obtener las ubicaciones",
+			});
+		}
+	}
+
+	useEffect(function () {
+		getLocations();
+	}, []);
 
 	async function submiteData(data) {
 		try {
 			console.log(data);
+			const formData = new FormData();
+			for (const key of Object.keys(data)) {
+				if (key === "userImage") {
+					formData.append(key, data.userImage[0]);
+				}
+				formData.append(key, data[key]);
+			}
+
+			const response = await axios.post(`${URL}/users`, formData);
+			console.log(response);
+			Swal.fire({
+				position: "top-end",
+				icon: "success",
+				title: `El usuario ${response.data.user?.firstName} fue creado correctamente`,
+				showConfirmButton: false,
+				timer: 1500,
+			}).then(() => {
+				navigate("/login");
+			});
 		} catch (error) {
 			console.log(error);
+			Swal.fire({
+				icon: "error",
+				title: "No se creo el usuario",
+				text: "Alguno de los datos ingresados no es correcto!",
+			});
+			if (error.response.status === 401) {
+				logout();
+			}
 		}
 	}
 
@@ -50,7 +104,11 @@ export default function Register() {
 			</div>
 			<div className="container-form">
 				<div className="box-form">
-					<form className="contact-form" onSubmit={handleSubmit(submiteData)}>
+					<form
+						className="contact-form"
+						onSubmit={handleSubmit(submiteData)}
+						encType="multipart/form-data"
+					>
 						<div className="form-title-container">
 							<TitleActive
 								title="CREA UNA CUENTA"
@@ -71,8 +129,7 @@ export default function Register() {
 											type="text"
 											name="firstName"
 											id="inputFirstName"
-											placeholder="John"
-											minLength="5"
+											minLength="3"
 											maxLength="50"
 											pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+( [a-zA-ZñÑáéíóúÁÉÍÓÚ]+)*$"
 											autoFocus
@@ -91,8 +148,7 @@ export default function Register() {
 											type="text"
 											name="lastName"
 											id="inputLastName"
-											placeholder="Doe"
-											minLength="5"
+											minLength="3"
 											maxLength="50"
 											pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+( [a-zA-ZñÑáéíóúÁÉÍÓÚ]+)*$"
 											required
@@ -111,9 +167,8 @@ export default function Register() {
 										type="email"
 										name="email"
 										id="inputEmail"
-										placeholder="user@example.com"
 										minLength="7"
-										maxLength="140"
+										maxLength="80"
 										pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$"
 										autoComplete="on"
 										required
@@ -132,7 +187,6 @@ export default function Register() {
 											type="password"
 											name="password"
 											id="inputPwd"
-											placeholder="Ingresa tu contraseña"
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 											required
 											{...register("password")}
@@ -149,10 +203,8 @@ export default function Register() {
 											type="password"
 											name="password2"
 											id="inputConfirmPwd"
-											placeholder="Reingresa tu contraseña"
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 											required
-											{...register("password2")}
 										/>
 									</div>
 								</div>
@@ -166,18 +218,17 @@ export default function Register() {
 										className="inputIcon"
 										name="location"
 										id="inputLocation"
+										defaultValue={"DEFAULT"}
 										{...register("location")}
 									>
-										<option value="New York, NY">New York, NY</option>
-										<option value="Los Angeles, CA">Los Angeles, CA</option>
-										<option value="Miami, FL">Miami, FL</option>
-										<option value="Chicago, IL">Chicago, IL</option>
-										<option value="Houston, TX">Houston, TX</option>
-										<option value="San Francisco, CA">San Francisco, CA</option>
-										<option value="Boston, MA">Boston, MA</option>
-										<option value="Dallas, TX">Dallas, TX</option>
-										<option value="San Diego, CA">San Diego, CA</option>
-										<option value="Denver, CO">Denver, CO</option>
+										<option disabled value="DEFAULT">
+											Selecciona...
+										</option>
+										{dbLocations.map((location) => (
+											<option key={location._id} value={location._id}>
+												{location.location}
+											</option>
+										))}
 									</select>
 								</div>
 							</div>
@@ -208,6 +259,7 @@ export default function Register() {
 											name="age"
 											id="inputAge"
 											min="1"
+											max="150"
 											defaultValue="18"
 											required
 											{...register("age")}
@@ -217,17 +269,18 @@ export default function Register() {
 							</div>
 
 							<div className="input-group">
-								<label htmlFor="inputProfileImg">Foto de Perfil (URL)*</label>
+								<label htmlFor="inputProfileImg">
+									Foto de Perfil (archivo)*
+								</label>
 								<div className="inputIconForm">
 									<FontAwesomeIcon icon={faImage} />
 									<input
 										className="inputIcon"
 										id="inputProfileImg"
-										type="url"
-										name="image"
-										value="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
-										required
-										{...register("image")}
+										type="file"
+										accept="image/*"
+										name="userImage"
+										{...register("userImage")}
 									/>
 								</div>
 							</div>

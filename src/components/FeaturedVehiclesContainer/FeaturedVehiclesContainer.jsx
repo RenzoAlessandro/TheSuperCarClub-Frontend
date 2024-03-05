@@ -15,7 +15,17 @@ export const FeaturedVehiclesContainer = () => {
 			const response = await axios.get(
 				import.meta.env.VITE_SERVER_URL + "/modelcars",
 			);
-			setModelCars(response.data.modelCars);
+			const allModelCars = response.data.modelCars;
+
+			const arrayModelCarsFiltrados = allModelCars.filter((modelCarFilter) => {
+				if (modelCarFilter.featured === true) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+
+			setModelCars(arrayModelCarsFiltrados);
 		} catch (error) {
 			console.log(error);
 		}

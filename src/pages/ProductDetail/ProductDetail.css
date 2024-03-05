@@ -1,0 +1,122 @@
+.container-wallpaper{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite; 
+
+    .model-img-container{
+        height: calc(100dvh - 86px - 180px);
+
+        .modelCar-text-background {
+            width: 100%;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            position: absolute;
+            font-size: 13vw;
+            font-weight: 700;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(0,0,0,0.05);
+        }
+
+        .modelCar-img-body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 80%;
+            height: auto;
+            pointer-events: none;
+        }
+    }
+
+    .info-modelCar-footer{
+        display: flex;
+        flex-direction: column;
+        margin: 0 0;
+        
+        .detail-modelCars-logo {
+            width: 250px;
+            height: auto;
+            pointer-events: none;
+        }
+
+        .info-modelCar{
+            padding: 3rem 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--detail-footer-bg-color);
+            color: #CED6E0;
+            height: 180px;
+        }
+
+
+        .info-modelCar:first-child{
+            background-color: transparent;
+        }
+
+        .info-modelCar:last-child {
+            background-color: #ECCC68;
+            color: #2F3542;
+        }
+
+        .reservar-btn{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-align: center;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .reservar-btn:hover{
+            background-color: transparent;
+            -webkit-text-decoration-line:  underline;
+            -webkit-text-decoration-style: solid;
+            -webkit-text-decoration-thickness: 2px;
+    
+            text-decoration-line:  underline;
+            text-decoration-style: solid;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 5px;
+        }
+    }
+}
+
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+@media screen and (width > 1200px) {
+    .container-wallpaper{
+        .model-img-container{
+            height: calc(100dvh - 86px - 180px);
+        }
+        .info-modelCar-footer{
+            height: 180px;
+            flex-direction: row;
+    
+
+            .info-modelCar{
+                flex: 1;
+            }
+        }
+    }
+
+}

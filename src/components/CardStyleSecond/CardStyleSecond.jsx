@@ -7,6 +7,9 @@ import {
 	faDroplet,
 	faRetweet,
 } from "@fortawesome/free-solid-svg-icons";
+import imageNotAvailable from "../../assets/defaults/no-image.png";
+import { Link } from "react-router-dom";
+const URL = import.meta.env.VITE_SERVER_URL;
 
 export const CardStyleSecond = ({ modelCar }) => {
 	function hexToRGB(hex) {
@@ -74,16 +77,11 @@ export const CardStyleSecond = ({ modelCar }) => {
 		return "hsl(" + hue + "," + s + "%," + l + "%)";
 	}
 
-	function getLogoBrand(brand) {
-		if (brand === "Alfa Romeo") {
-			return "https://raw.githubusercontent.com/RenzoAlessandro/TheSuperCarClub-Assets/main/brands/isotipo-Alfa-Romeo.webp";
-		}
-
-		return "https://raw.githubusercontent.com/RenzoAlessandro/TheSuperCarClub-Assets/main/brands/isotipo-Bentley.webp";
-	}
-
 	return (
-		<a onClick={null}>
+		<Link
+			to={`/product-detail/${modelCar._id}`}
+			style={{ textDecoration: "none" }}
+		>
 			<article className="card-cars-first">
 				<header
 					style={{ backgroundColor: getPastelHigthColor(modelCar.color) }}
@@ -92,18 +90,22 @@ export const CardStyleSecond = ({ modelCar }) => {
 					<div className="card-first-info">
 						<img
 							className="card-first-logo"
-							src={getLogoBrand(modelCar.brand)}
+							src={modelCar.brand.isoTipo}
 							alt={modelCar.model}
 						/>
 						<div className="card-first-name">
-							<h2 className="card-first-make">{modelCar.brand}</h2>
+							<h2 className="card-first-make">{modelCar.brand.brand}</h2>
 							<p className="card-first-model">{modelCar.model}</p>
 						</div>
 					</div>
 					<img
 						className="card-first-img"
-						src="https://media.gqitalia.it/photos/651eddfe8439d34525d5b10d/16:9/w_2272,h_1278,c_limit/Dinamiche%20Giallo%20Countach%20Vallelunga%20-%20Andy%20Casano00002.jpg"
-						alt={modelCar.model}
+						src={
+							modelCar.carImage
+								? `${URL}/images/modelsCars/${modelCar.carImage}`
+								: imageNotAvailable
+						}
+						alt={`Modelo ${modelCar.model}`}
 					/>
 				</header>
 				<div
@@ -117,16 +119,16 @@ export const CardStyleSecond = ({ modelCar }) => {
 						</div>
 						<div className="card-first-transmission">
 							<FontAwesomeIcon icon={faRetweet} />
-							<p>{modelCar.transmission}</p>
+							<p>{modelCar.transmission.abbreviation}</p>
 						</div>
 						<div className="card-first-fuel">
 							<FontAwesomeIcon icon={faDroplet} />
-							<p>{modelCar.fuel}</p>
+							<p>{modelCar.fuel.fuel}</p>
 						</div>
 						<div className="card-first-type">
 							<FontAwesomeIcon icon={faCarSide} />
 							<i className="fa-solid fa-car-side"></i>
-							<p>{modelCar.type}</p>
+							<p>{modelCar.type.type}</p>
 						</div>
 					</div>
 					<div className="card-first-price">
@@ -137,7 +139,7 @@ export const CardStyleSecond = ({ modelCar }) => {
 					</div>
 				</div>
 			</article>
-		</a>
+		</Link>
 	);
 };
 
