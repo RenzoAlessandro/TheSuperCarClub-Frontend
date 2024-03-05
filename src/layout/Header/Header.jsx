@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-import logoTheSupercarClub from "../../assets/TheSupercarClub.webp";
+import logoTheSupercarClub from "../../assets/TheSupercarClub.png";
 import SwitchMode from "../../components/SwitchMode/SwitchMode";
 import { useUser } from "../../context/UserContext";
 import defaultPictureProfile from "../../assets/defaults/default-picture-profile.png";

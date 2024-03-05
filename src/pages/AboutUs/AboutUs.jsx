@@ -2,13 +2,13 @@ import "./AboutUs.css";
 import TextCard from "../../components/TextCard/TextCard";
 import TitleCenter from "../../components/TitleCenter/TitleCenter";
 
-import aboutUsImg from "../../assets/aboutUs/AboutUs-05.webp";
+import aboutUsImg from "../../assets/aboutUs/AboutUs-05.jpg";
 import SectionDivider from "../../components/SectionDivider/SectionDivider";
 import CardStyleFirst from "../../components/CardStyleFirst/CardStyleFirst";
 
-import imgHeader from "../../assets/developerProfile/bg-pattern-card.webp";
-import imgProfile from "../../assets/developerProfile/image-renzo.webp";
-import imgflag from "../../assets/developerProfile/flag-peru.webp";
+import imgHeader from "../../assets/developerProfile/bg-pattern-card.jpg";
+import imgProfile from "../../assets/developerProfile/image-renzo.jpg";
+import imgflag from "../../assets/developerProfile/flag-peru.png";
 
 export default function AboutUs() {
 	return (

@@ -1,7 +1,7 @@
 import "./Profile.css";
 import { useUser } from "../../context/UserContext";
 import defaultPictureProfile from "../../assets/defaults/default-picture-profile.png";
-import imgHeader from "../../assets/forms/forms-02.webp";
+import imgHeader from "../../assets/forms/forms-02.jpg";
 const URL = import.meta.env.VITE_SERVER_URL;
 
 export default function Profile() {

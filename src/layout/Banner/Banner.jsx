@@ -1,11 +1,11 @@
 import "./Banner.css";
 
-import FerrariF12 from "../../assets/banner/Banner01-Ferrari-F12.webp";
-import NissanGTR from "../../assets/banner/Banner02-Nissan-GTR.webp";
-import DodgeChallenger from "../../assets/banner/Banner03-Dodge-Challenger.webp";
-import AstonMartinVantage from "../../assets/banner/Banner05-Aston-Martin-Vantage.webp";
-import Porsche911CarreraS from "../../assets/banner/Banner07-Porsche-911-Carrera-S.webp";
-import LamborghiniHuracanLP6104 from "../../assets/banner/Banner08-Lamborghini-Huracan-LP6104.webp";
+import FerrariF12 from "../../assets/banner/Banner01-Ferrari-F12.png";
+import NissanGTR from "../../assets/banner/Banner02-Nissan-GTR.png";
+import DodgeChallenger from "../../assets/banner/Banner03-Dodge-Challenger.png";
+import AstonMartinVantage from "../../assets/banner/Banner05-Aston-Martin-Vantage.png";
+import Porsche911CarreraS from "../../assets/banner/Banner07-Porsche-911-Carrera-S.png";
+import LamborghiniHuracanLP6104 from "../../assets/banner/Banner08-Lamborghini-Huracan-LP6104.png";
 
 export default function Banner() {
 	const sayHello = (num) => {
