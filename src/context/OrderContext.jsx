@@ -121,8 +121,10 @@ export const OrderProvider = ({ children }) => {
 		setTotal(total);
 	}
 
-	function removeItem(id) {
-		// Debo buscar en el array order ese item y eliminarlo y actualizar el estado de orders
+	function removeItemCart(id) {
+		const updatedOrder = order.filter((producto) => producto.productId !== id);
+		setOrder(updatedOrder);
+		localStorage.setItem("order", JSON.stringify(updatedOrder));
 	}
 
 	function clearCart() {
@@ -140,7 +142,7 @@ export const OrderProvider = ({ children }) => {
 				totalItems,
 				addItem,
 				finishOrder,
-				removeItem,
+				removeItemCart,
 				clearCart,
 				toggleMenu,
 			}}

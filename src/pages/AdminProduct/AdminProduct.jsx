@@ -266,7 +266,7 @@ export default function AdminProduct() {
 	}
 
 	return (
-		<div className="admin-container">
+		<div className="admin-product-container">
 			<div className="left-container">
 				<form
 					className="adminProduct-form"

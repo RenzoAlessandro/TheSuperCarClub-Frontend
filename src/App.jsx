@@ -16,10 +16,13 @@ import Profile from "./pages/Profile/Profile";
 import { Order } from "./pages/Order/Order";
 import { ProductDetail } from "./pages/ProductDetail/ProductDetail";
 import { Cart } from "./layout/Cart/Cart";
+import { useThemeContext } from "./context/ThemeContext";
 
 function App() {
+	const { constextTheme } = useThemeContext();
+
 	return (
-		<>
+		<div id={constextTheme}>
 			<Header />
 			<Cart />
 
@@ -57,7 +60,7 @@ function App() {
 			</main>
 
 			<Footer />
-		</>
+		</div>
 	);
 }
 

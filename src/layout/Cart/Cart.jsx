@@ -5,8 +5,15 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 const URL = import.meta.env.VITE_SERVER_URL;
 
 export const Cart = () => {
-	const { order, cartMenu, total, totalItems, clearCart, finishOrder } =
-		useOrder();
+	const {
+		order,
+		cartMenu,
+		total,
+		totalItems,
+		removeItemCart,
+		clearCart,
+		finishOrder,
+	} = useOrder();
 	return (
 		<div className={`cart-wrapper ${cartMenu ? "active" : ""}`}>
 			<div className="list-container">
@@ -23,8 +30,12 @@ export const Cart = () => {
 								{prod.productName}
 								<div className="order-quantity">
 									{prod.quantity}
+
 									<div className="order-delete-item">
-										<FontAwesomeIcon icon={faTrash} />
+										<FontAwesomeIcon
+											icon={faTrash}
+											onClick={() => removeItemCart(prod.productId)}
+										/>
 									</div>
 								</div>
 							</li>

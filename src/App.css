@@ -3,6 +3,7 @@
 =============================================================*/
 .main-container {
     flex-grow: 1;
+    background-color: var(--body-bg-color);
 }
 
 .main-max-width {

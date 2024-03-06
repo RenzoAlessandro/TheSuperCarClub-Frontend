@@ -213,7 +213,7 @@ export default function AdminUser() {
 	}
 
 	return (
-		<div className="admin-container">
+		<div className="admin-user-container">
 			<div className="left-container">
 				<form
 					className="adminUser-form"

@@ -134,10 +134,11 @@
         align-items: flex-end;
 
         .card-second-date {
-            color: #858585;
+            color: #939393;
             font-size: small;
         }
         .card-second-price {
+            color: var(--text-color);
             display: flex;
             .text-second-price {
                 font-weight: 500;

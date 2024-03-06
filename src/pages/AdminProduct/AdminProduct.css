@@ -1,5 +1,5 @@
-.admin-container {
-    margin: 1rem;
+.admin-product-container {
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -30,7 +30,7 @@
 }
 
 @media screen and (width > 1200px) {
-    .admin-container {
+    .admin-product-container {
         flex-direction: row;
     }
 

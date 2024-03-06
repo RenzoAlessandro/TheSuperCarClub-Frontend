@@ -19,62 +19,55 @@
   --fuel-color: #ffcb77;
   --type-color: #17c3b2;
 
-
-  /*************** Light Mode ***************/
-  color-scheme: light dark;
-  --header-bg-color: #fff;
-  --body-bg-color: #F2F3F5; /*#f2f2f2;*/
-  --footer-bg-color: #070B1F;/*#323a4b;*/
-  --detail-body-bg-color: #F2F3F5;
-  --detail-footer-bg-color: #2F3542;
-
-  --text-color: #000000;
-  --text-color-reverse: #ffffff;
-  --input-color: #ffffff;
-  --input-disabled-color: rgb(195, 195, 195);
-  --button-color: #151717;
-  --button-header-hover-color: rgb(120, 120, 120);
-
-  --card-basic-color: white;
-  --background-basic-color: white;
-  --range-dot: #151717; 
-  --border-color: black;
-  --box-shadow-1: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  --box-shadow-2: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  --box-shadow-3: rgba(0, 0, 0, 0.20) 0px 2px 8px 0px;
-}
-
-
-
-/*************** Dark Mode ***************/
-
-@media (prefers-color-scheme: dark) {
-  :root {
-      --header-bg-color: #03131a;
-      --body-bg-color: rgb(33,36,46);
-      --footer-bg-color: #03131a;
-      --detail-body-bg-color: #CED6E0;
-      --detail-footer-bg-color: #2F3542;
-
-      --text-color: #ffffff;
-      --text-color-reverse: #000000;
-      --input-color: rgb(40,45,58);
-      --input-disabled-color: rgb(56, 65, 89);
-      --button-color: rgb(105,222,210);
-      --button-header-hover-color:  rgb(164, 229, 222);
-
-      --card-basic-color:  rgb(40,45,58);
-      --background-basic-color: rgb(49, 54, 66);
-      --range-dot:rgb(105,222,210);
-      --border-color: rgb(66, 66, 66);
-
-
-      .nav-logo {
-          -webkit-filter: invert(100%); /* Safari/Chrome */
-          filter: invert(100%);
-      }
+  #Light{
+    --header-bg-color: #fff;
+    --body-bg-color: #F2F3F5; /*#f2f2f2;*/
+    --footer-bg-color: #070B1F;/*#323a4b;*/
+    --detail-body-bg-color: #F2F3F5;
+    --detail-footer-bg-color: #2F3542;
+  
+    --text-color: #000000;
+    --text-color-reverse: #ffffff;
+    --input-color: #ffffff;
+    --input-disabled-color: rgb(195, 195, 195);
+    --button-color: #151717;
+    --button-header-hover-color: rgb(120, 120, 120);
+  
+    --card-basic-color: white;
+    --background-basic-color: white;
+    --range-dot: #151717; 
+    --border-color: black;
+    --box-shadow-1: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    --box-shadow-2: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+    --box-shadow-3: rgba(0, 0, 0, 0.20) 0px 2px 8px 0px;
+  }
+  
+  #Dark{
+    --header-bg-color: #03131a;
+    --body-bg-color: rgb(33,36,46);
+    --footer-bg-color: #03131a;
+    --detail-body-bg-color: #CED6E0;
+    --detail-footer-bg-color: #2F3542;
+  
+    --text-color: #ffffff;
+    --text-color-reverse: #000000;
+    --input-color: rgb(40,45,58);
+    --input-disabled-color: rgb(56, 65, 89);
+    --button-color: rgb(105,222,210);
+    --button-header-hover-color:  rgb(164, 229, 222);
+  
+    --card-basic-color:  rgb(40,45,58);
+    --background-basic-color: rgb(49, 54, 66);
+    --range-dot:rgb(105,222,210);
+    --border-color: rgb(66, 66, 66);
+  
+    .nav-logo {
+        -webkit-filter: invert(100%); /* Safari/Chrome */
+        filter: invert(100%);
+    }
   }
 }
+
 
 #root {
   display: flex;
@@ -84,19 +77,14 @@
 
 body {
     font-family: var(--body-font);
-    background-color: var(--body-bg-color);
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
 }
 
-
-
 /*============================================================
 =========================== BASICOS ==========================
 =============================================================*/
-
-
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -121,7 +109,6 @@ body {
   -webkit-filter: invert(100%); /* Safari/Chrome */
   filter: invert(100%);
 }
-
 /*============================================================
 ========================= BASICOS END ========================
 =============================================================*/
@@ -130,7 +117,7 @@ body {
 /*============================================================
 ==================== CUSTOMIZE SWEETALERT 2  =================
 =============================================================*/
-.swal2-confirm {
+/* .swal2-confirm {
   background-color: var(--button-color) !important;
   color: var(--text-color-reverse) !important;
 }
@@ -138,45 +125,10 @@ body {
 .swal2-popup{
   background-color: var(--card-basic-color) !important;
   color: var(--text-color) !important;
-}
+}  */
 /*============================================================
 ================== CUSTOMIZE SWEETALERT 2  END ===============
 =============================================================*/
-
-
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
-  color-scheme: light dark;
-
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
-
-
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}  */
-
-/* @media screen and (width > 1200px) {
-  .responsive-table{
-    flex: 1;
-  }
-} */
-
 
 .responsive-table{
   overflow-x:auto;

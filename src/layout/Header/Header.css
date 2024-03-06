@@ -89,7 +89,7 @@
 }
 
 .input-check-user:checked ~ .user-nav{
-    height: calc(64px * 2);
+    height: calc(64px * 3);
 }
 
 .logo-link {
@@ -199,7 +199,9 @@
     display: none;
 }
 
-.display-switch,
+.display-switch{
+    height: 63px;
+}
 .display-MyRents{
     display: none;
 }
@@ -281,6 +283,7 @@
 
         .display-switch{
             display: flex;
+            height: 100%;
         }
         .display-MyRents{
             display: inline-block;

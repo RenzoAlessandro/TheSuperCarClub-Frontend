@@ -2,7 +2,7 @@
 ========================== SECTION ===========================
 =============================================================*/
 .section-container {
-    margin: 1rem 1rem;
+    padding: 1rem;
 }
 
 .section-heading {
@@ -30,7 +30,7 @@
 @media screen and (width > 1200px) {
 
     .section-container {
-        margin: 2rem 0rem;
+        padding: 2rem 0rem;
     }
 
 }
