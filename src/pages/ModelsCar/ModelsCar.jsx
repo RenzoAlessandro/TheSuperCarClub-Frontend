@@ -26,7 +26,7 @@ export default function ModelsCar() {
 	const [dbTypes, setTypes] = useState([]);
 
 	const [totalButtons, setTotalButtons] = useState(0);
-	const [limit, setLimit] = useState(12);
+	const [limit, setLimit] = useState(20);
 
 	async function getModelCars(page = 0) {
 		try {
@@ -333,9 +333,9 @@ export default function ModelsCar() {
 						<div className="pagination-show">
 							Mostrar
 							<select onChange={(e) => setLimit(e.target.value)}>
-								<option value={12}>12</option>
 								<option value={20}>20</option>
 								<option value={30}>30</option>
+								<option value={40}>40</option>
 							</select>
 							por página
 						</div>

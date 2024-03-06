@@ -32,7 +32,7 @@ export default function AdminUser() {
 	const [userID, setUserid] = useState();
 
 	const [totalButtons, setTotalButtons] = useState(0);
-	const [limit, setLimit] = useState(7);
+	const [limit, setLimit] = useState(10);
 
 	const { logout } = useUser();
 
@@ -509,7 +509,6 @@ export default function AdminUser() {
 					<div className="pagination-show">
 						Mostrar
 						<select onChange={(e) => setLimit(e.target.value)}>
-							<option value={7}>7</option>
 							<option value={10}>10</option>
 							<option value={20}>20</option>
 							<option value={30}>30</option>
