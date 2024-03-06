@@ -22,6 +22,7 @@
 	box-shadow: none;
 	border: none;
 	background: rgba(0,0,0,0.2);
+	cursor: pointer;
 }
 
 .slider-navi a.active {
@@ -59,7 +60,7 @@
 	width: 70%;
 	transform-origin: left bottom;
 	transition: transform 0.1s linear 0.4s;
-	/* opacity: 0; */
+	opacity: 0; 
 	position: relative;
 	overflow: hidden;
 }
@@ -68,7 +69,14 @@
 	width: 30%;
 	transform-origin: right center;
 	transition: transform 0.1s linear 0s;
-	/* opacity: 0; */
+	opacity: 0;
+}
+
+.flex-preStart .flex-item-left,
+.flex-preStart .flex-item-right,
+.flex-active .flex-item-left,
+.flex-active .flex-item-right {
+	opacity: 1;
 }
 
 .flex-content {
@@ -166,8 +174,45 @@
 	background: #a7bcbb;
 }
 
+/* orange */
+.flex--orange .flex-item-left {
+	background: #ffb327;
+}
+.flex--orange .flex-item-right {
+	background: #ffec8d;
+}
 
+/* Animate-START point */
 
+.flex-container.animate-start .flex-content {
+	transform: translate3d(0,-200%,0);
+	opacity: 0;
+}
+
+.flex-container.animate-start .banner-img-modelcar {
+	transform: translate3d(-200px,0,0);
+	opacity: 0;
+}
+
+/* Animate-END point */
+
+.flex-container.animate-end .flex-item-left {
+	transform: scaleY(0);
+}
+
+.flex-container.animate-end .flex-item-right {
+	transform: scaleX(0);
+}
+
+.flex-container.animate-end .flex-content {
+	transform: translate3d(0,200%,0);
+	opacity: 0;
+}
+
+.flex-container.animate-end .banner-img-modelcar {
+	transform: translate3d(200px,0,0);
+	opacity: 0;
+}
 
 /*============================================================
 ========================= RESPONSIVE =========================

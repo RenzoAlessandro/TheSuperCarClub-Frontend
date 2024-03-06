@@ -6,27 +6,26 @@ import DodgeChallenger from "../../assets/banner/Banner03-Dodge-Challenger.webp"
 import AstonMartinVantage from "../../assets/banner/Banner05-Aston-Martin-Vantage.webp";
 import Porsche911CarreraS from "../../assets/banner/Banner07-Porsche-911-Carrera-S.webp";
 import LamborghiniHuracanLP6104 from "../../assets/banner/Banner08-Lamborghini-Huracan-LP6104.webp";
+import { useState } from "react";
 
 export default function Banner() {
-	const sayHello = (num) => {
-		// const current = document.getElementByClassName("flex-active");
-		const current = 1;
-		const next = 2;
-		console.log(current);
+	const [step, setStep] = useState(1);
 
-		if (current === next) {
-			return false;
-		} else {
-			const hola =
-				document.getElementsByClassName("slider-warpper")[0].children;
-			console.log(hola);
-		}
-	};
+	function sliderBannerActive(num = 1) {
+		setStep(num);
+	}
 
 	return (
 		<div className="main-banner-container">
 			<div className="slider-warpper">
-				<div className="flex-container flex-yellow flex-active" data-slide="1">
+				<div
+					className={
+						step === 1
+							? "flex-container flex-yellow flex-active"
+							: "flex-container flex-yellow animate-start"
+					}
+					data-slide="1"
+				>
 					<div className="flex-item flex-item-left">
 						<div className="flex-content">
 							<p className="text-sub">Ferrari</p>
@@ -43,7 +42,14 @@ export default function Banner() {
 					<img className="banner-img-modelcar" src={FerrariF12} />
 				</div>
 
-				<div className="flex-container flex-blue animate-start" data-slide="2">
+				<div
+					className={
+						step === 2
+							? "flex-container flex-blue flex-active"
+							: "flex-container flex-blue animate-start"
+					}
+					data-slide="2"
+				>
 					<div className="flex-item flex-item-left">
 						<div className="flex-content">
 							<p className="text-sub">Nissan</p>
@@ -60,7 +66,14 @@ export default function Banner() {
 					<img className="banner-img-modelcar" src={NissanGTR} />
 				</div>
 
-				<div className="flex-container flex--red animate-start" data-slide="3">
+				<div
+					className={
+						step === 3
+							? "flex-container flex--red flex-active"
+							: "flex-container flex--red animate-start"
+					}
+					data-slide="3"
+				>
 					<div className="flex-item flex-item-left">
 						<div className="flex-content">
 							<p className="text-sub">Dodge</p>
@@ -78,7 +91,11 @@ export default function Banner() {
 				</div>
 
 				<div
-					className="flex-container flex--darkblue animate-start"
+					className={
+						step === 4
+							? "flex-container flex--darkblue flex-active"
+							: "flex-container flex--darkblue animate-start"
+					}
 					data-slide="4"
 				>
 					<div className="flex-item flex-item-left">
@@ -97,7 +114,14 @@ export default function Banner() {
 					<img className="banner-img-modelcar" src={Porsche911CarreraS} />
 				</div>
 
-				<div className="flex-container flex--gray animate-start" data-slide="5">
+				<div
+					className={
+						step === 5
+							? "flex-container flex--gray flex-active"
+							: "flex-container flex--gray animate-start"
+					}
+					data-slide="5"
+				>
 					<div className="flex-item flex-item-left">
 						<div className="flex-content">
 							<p className="text-sub">Aston Martin</p>
@@ -114,7 +138,14 @@ export default function Banner() {
 					<img className="banner-img-modelcar" src={AstonMartinVantage} />
 				</div>
 
-				<div className="flex-container flex--gray animate-start" data-slide="6">
+				<div
+					className={
+						step === 6
+							? "flex-container flex--orange flex-active"
+							: "flex-container flex--orange animate-start"
+					}
+					data-slide="6"
+				>
 					<div className="flex-item flex-item-left">
 						<div className="flex-content">
 							<p className="text-sub">Lamborghini</p>
@@ -135,54 +166,54 @@ export default function Banner() {
 			<div className="slider-navi">
 				<a
 					onClick={() => {
-						sayHello(1);
+						sliderBannerActive(1);
 					}}
-					className="slide-nav active"
+					className={step === 1 ? "slide-nav active" : "slide-nav"}
 					data-slide="1"
 				>
 					1
 				</a>
 				<a
 					onClick={() => {
-						sayHello(2);
+						sliderBannerActive(2);
 					}}
-					className="slide-nav"
+					className={step === 2 ? "slide-nav active" : "slide-nav"}
 					data-slide="2"
 				>
 					2
 				</a>
 				<a
 					onClick={() => {
-						sayHello(3);
+						sliderBannerActive(3);
 					}}
-					className="slide-nav"
+					className={step === 3 ? "slide-nav active" : "slide-nav"}
 					data-slide="3"
 				>
 					3
 				</a>
 				<a
 					onClick={() => {
-						sayHello(4);
+						sliderBannerActive(4);
 					}}
-					className="slide-nav"
+					className={step === 4 ? "slide-nav active" : "slide-nav"}
 					data-slide="4"
 				>
 					4
 				</a>
 				<a
 					onClick={() => {
-						sayHello(5);
+						sliderBannerActive(5);
 					}}
-					className="slide-nav"
+					className={step === 5 ? "slide-nav active" : "slide-nav"}
 					data-slide="5"
 				>
 					5
 				</a>
 				<a
 					onClick={() => {
-						sayHello(6);
+						sliderBannerActive(6);
 					}}
-					className="slide-nav"
+					className={step === 6 ? "slide-nav active" : "slide-nav"}
 					data-slide="6"
 				>
 					6
