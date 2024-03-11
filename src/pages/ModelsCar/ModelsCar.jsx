@@ -15,6 +15,7 @@ import {
 	faSwatchbook,
 } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import SpinnerLoader from "../../components/SpinnerLoader/SpinnerLoader";
 const URL = import.meta.env.VITE_SERVER_URL;
 
 export default function ModelsCar() {
@@ -28,6 +29,8 @@ export default function ModelsCar() {
 	const [totalButtons, setTotalButtons] = useState(0);
 	const [limit, setLimit] = useState(20);
 
+	const [loading, setLoading] = useState(true);
+
 	async function getModelCars(page = 0) {
 		try {
 			const response = await axios.get(
@@ -36,7 +39,9 @@ export default function ModelsCar() {
 			setModelCars(response.data.modelCars);
 			const total = response.data.total;
 			setTotalButtons(total);
+			setLoading(false);
 		} catch (error) {
+			setLoading(true);
 			console.log(error);
 			Swal.fire({
 				icon: "error",
@@ -300,9 +305,15 @@ export default function ModelsCar() {
 				<div className="modelcar-container results-container">
 					<h2>Mostrando resultados</h2>
 					<section className="card-cars-first-container">
-						{modelCars.map((modelCar) => {
-							return <CardStyleSecond key={modelCar._id} modelCar={modelCar} />;
-						})}
+						{loading ? (
+							<SpinnerLoader />
+						) : (
+							modelCars.map((modelCar) => {
+								return (
+									<CardStyleSecond key={modelCar._id} modelCar={modelCar} />
+								);
+							})
+						)}
 					</section>
 					<div className="pagination-container">
 						<div className="pagination-page">

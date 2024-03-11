@@ -37,6 +37,11 @@
     --background-basic-color: white;
     --range-dot: #151717; 
     --border-color: black;
+
+    --spinner-primary: rgb(174, 174, 174);
+    --spinner-secondary: rgb(122, 122, 122);
+    --spinner-tertiary: rgb(0, 0, 0);
+
     --box-shadow-1: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     --box-shadow-2: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
     --box-shadow-3: rgba(0, 0, 0, 0.20) 0px 2px 8px 0px;
@@ -60,6 +65,14 @@
     --background-basic-color: rgb(49, 54, 66);
     --range-dot:rgb(105,222,210);
     --border-color: rgb(66, 66, 66);
+
+    --spinner-primary: rgb(0, 255, 229);
+    --spinner-secondary: rgb(105,222,210);
+    --spinner-tertiary: rgb(39, 159, 147);
+
+    --box-shadow-1: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    --box-shadow-2: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+    --box-shadow-3: rgba(0, 0, 0, 0.20) 0px 2px 8px 0px;
   
     .nav-logo {
         -webkit-filter: invert(100%); /* Safari/Chrome */

@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import CardStyleSecond from "../CardStyleSecond/CardStyleSecond";
 import axios from "axios";
 import SectionTitle from "../SectionTitle/SectionTitle";
+import SpinnerLoader from "../SpinnerLoader/SpinnerLoader";
 const URL = import.meta.env.VITE_SERVER_URL;
 
 export const DriveNowContainer = () => {
 	const [modelCars, setModelCars] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(function () {
 		getModelCars();
@@ -24,9 +26,10 @@ export const DriveNowContainer = () => {
 					return false;
 				}
 			});
-
 			setModelCars(arrayModelCarsFiltrados);
+			setLoading(false);
 		} catch (error) {
+			setLoading(true);
 			console.log(error);
 		}
 	}
@@ -39,9 +42,13 @@ export const DriveNowContainer = () => {
 			/>
 
 			<section className="card-cars-first-container">
-				{modelCars.map((modelCar) => {
-					return <CardStyleSecond key={modelCar._id} modelCar={modelCar} />;
-				})}
+				{loading ? (
+					<SpinnerLoader />
+				) : (
+					modelCars.map((modelCar) => {
+						return <CardStyleSecond key={modelCar._id} modelCar={modelCar} />;
+					})
+				)}
 			</section>
 		</>
 	);

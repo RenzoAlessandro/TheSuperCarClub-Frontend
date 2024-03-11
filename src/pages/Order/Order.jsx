@@ -5,11 +5,14 @@ import { OrderTable } from "../../components/OrderTable/OrderTable";
 import Swal from "sweetalert2";
 import TitleActive from "../../components/TitleActive/TitleActive";
 import { useUser } from "../../context/UserContext";
+import SpinnerLoader from "../../components/SpinnerLoader/SpinnerLoader";
 const URL = import.meta.env.VITE_SERVER_URL;
 
 export const Order = () => {
 	const [dbOrders, setDbOrder] = useState([]);
 	const { admin } = useUser();
+
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		getOrders();
@@ -23,7 +26,9 @@ export const Order = () => {
 			});
 			const orders = response.data.orders;
 			setDbOrder(orders);
+			setLoading(false);
 		} catch (error) {
+			setLoading(true);
 			console.log(error);
 			Swal.fire({
 				icon: "error",
@@ -44,9 +49,7 @@ export const Order = () => {
 					}
 				/>
 			</div>
-			<div className="">
-				<OrderTable orders={dbOrders} />
-			</div>
+			{loading ? <SpinnerLoader /> : <OrderTable orders={dbOrders} />}
 		</div>
 	);
 };

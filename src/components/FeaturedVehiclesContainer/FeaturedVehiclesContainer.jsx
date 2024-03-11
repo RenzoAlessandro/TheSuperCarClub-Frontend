@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import CardStyleThird from "../CardStyleThird/CardStyleThird";
 import axios from "axios";
 import SectionTitle from "../SectionTitle/SectionTitle";
+import SpinnerLoader from "../SpinnerLoader/SpinnerLoader";
 
 export const FeaturedVehiclesContainer = () => {
 	const [modelCars, setModelCars] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(function () {
 		getModelCars();
@@ -26,7 +28,9 @@ export const FeaturedVehiclesContainer = () => {
 			});
 
 			setModelCars(arrayModelCarsFiltrados);
+			setLoading(false);
 		} catch (error) {
+			setLoading(true);
 			console.log(error);
 		}
 	}
@@ -38,9 +42,13 @@ export const FeaturedVehiclesContainer = () => {
 				subtitle="Más de 100 unidades disponibles"
 			/>
 			<section className="card-cars-second-container">
-				{modelCars.map((modelCar) => {
-					return <CardStyleThird key={modelCar._id} modelCar={modelCar} />;
-				})}
+				{loading ? (
+					<SpinnerLoader />
+				) : (
+					modelCars.map((modelCar) => {
+						return <CardStyleThird key={modelCar._id} modelCar={modelCar} />;
+					})
+				)}
 			</section>
 		</>
 	);

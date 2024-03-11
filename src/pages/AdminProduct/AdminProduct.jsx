@@ -28,6 +28,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useUser } from "../../context/UserContext";
 import formatDateInput from "../../utils/formatDateInput";
+import SpinnerLoader from "../../components/SpinnerLoader/SpinnerLoader";
 const URL = import.meta.env.VITE_SERVER_URL;
 const TOKEN = localStorage.getItem("token");
 
@@ -45,6 +46,8 @@ export default function AdminProduct() {
 
 	const { logout } = useUser();
 
+	const [loading, setLoading] = useState(true);
+
 	async function getModelCars(page = 0) {
 		try {
 			const response = await axios.get(
@@ -54,7 +57,9 @@ export default function AdminProduct() {
 			const total = response.data.total;
 			setDbModelCars(modelCars);
 			setTotalButtons(total);
+			setLoading(false);
 		} catch (error) {
+			setLoading(true);
 			console.log(error);
 			Swal.fire({
 				icon: "error",
@@ -698,11 +703,15 @@ export default function AdminProduct() {
 					></input>
 				</div>
 
-				<ProductTable
-					modelCars={dbModelCars}
-					deleteModelCar={deleteModelCar}
-					setFormValue={setFormValue}
-				/>
+				{loading ? (
+					<SpinnerLoader />
+				) : (
+					<ProductTable
+						modelCars={dbModelCars}
+						deleteModelCar={deleteModelCar}
+						setFormValue={setFormValue}
+					/>
+				)}
 
 				<div className="pagination-container">
 					<div className="pagination-page">

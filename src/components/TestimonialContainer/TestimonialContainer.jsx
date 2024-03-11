@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import CardTestimonial from "../CardTestimonial/CardTestimonial";
 import axios from "axios";
 import SectionTitle from "../SectionTitle/SectionTitle";
+import SpinnerLoader from "../SpinnerLoader/SpinnerLoader";
 
 export const TestimonialContainer = () => {
 	const [testimonials, setTestimonials] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(function () {
 		getTestimonials();
@@ -16,7 +18,9 @@ export const TestimonialContainer = () => {
 				import.meta.env.VITE_SERVER_URL + "/testimonials",
 			);
 			setTestimonials(response.data.testimonials);
+			setLoading(false);
 		} catch (error) {
+			setLoading(true);
 			console.log(error);
 		}
 	}
@@ -28,11 +32,18 @@ export const TestimonialContainer = () => {
 				subtitle="Lo que nuestros clientes están diciendo"
 			/>
 			<section className="card-testimonial-container">
-				{testimonials.map((testimonial) => {
-					return (
-						<CardTestimonial key={testimonial._id} testimonial={testimonial} />
-					);
-				})}
+				{loading ? (
+					<SpinnerLoader />
+				) : (
+					testimonials.map((testimonial) => {
+						return (
+							<CardTestimonial
+								key={testimonial._id}
+								testimonial={testimonial}
+							/>
+						);
+					})
+				)}
 			</section>
 		</>
 	);

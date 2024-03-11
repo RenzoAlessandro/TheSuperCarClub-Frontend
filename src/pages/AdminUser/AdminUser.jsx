@@ -22,6 +22,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useUser } from "../../context/UserContext";
 import formatDateInput from "../../utils/formatDateInput";
+import SpinnerLoader from "../../components/SpinnerLoader/SpinnerLoader";
 const URL = import.meta.env.VITE_SERVER_URL;
 const TOKEN = localStorage.getItem("token");
 
@@ -36,6 +37,8 @@ export default function AdminUser() {
 
 	const { logout } = useUser();
 
+	const [loading, setLoading] = useState(true);
+
 	// OBTENER LOS USURIOS DE BASE DE DATOS
 	async function getUsers(page = 0) {
 		try {
@@ -46,7 +49,9 @@ export default function AdminUser() {
 			const total = response.data.total;
 			setDbUsers(users);
 			setTotalButtons(total);
+			setLoading(false);
 		} catch (error) {
+			setLoading(true);
 			console.log(error);
 			Swal.fire({
 				icon: "error",
@@ -476,11 +481,15 @@ export default function AdminUser() {
 					/>
 				</div>
 
-				<UserTable
-					users={dbUsers}
-					deleteUser={deleteUser}
-					setFormValue={setFormValue}
-				/>
+				{loading ? (
+					<SpinnerLoader />
+				) : (
+					<UserTable
+						users={dbUsers}
+						deleteUser={deleteUser}
+						setFormValue={setFormValue}
+					/>
+				)}
 
 				<div className="pagination-container">
 					<div className="pagination-page">
