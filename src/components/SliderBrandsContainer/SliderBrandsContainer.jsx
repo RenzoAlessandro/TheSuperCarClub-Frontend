@@ -30,20 +30,21 @@ export const SliderBrandsContainer = () => {
 				title="Marcas destacadas"
 				subtitle="Más de 10 marcas disponibles"
 			/>
+
 			<div className="slider-brands-container">
-				<div className="slide-track">
-					{loading ? (
-						<SpinnerLoader />
-					) : (
-						brands.map((brand) => {
+				{loading ? (
+					<SpinnerLoader />
+				) : (
+					<div className="slide-track">
+						{brands.map((brand) => {
 							return (
 								<div key={brand._id} className="slide-brand">
 									<img src={brand.imagoTipo} alt={brand.brand} />
 								</div>
 							);
-						})
-					)}
-				</div>
+						})}
+					</div>
+				)}
 			</div>
 		</>
 	);
